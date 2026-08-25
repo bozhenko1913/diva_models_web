@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# рекламный лендинг не должен конкурировать с сайтом в поиске
+Disallow: /apply.html
+# служебный фрагмент формы, подгружается скриптом
+Disallow: /apply-form.html
+
+Sitemap: https://models-diva.com/sitemap.xml

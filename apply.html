@@ -1,0 +1,515 @@
+<!doctype html>
+<!--
+  ############################################################################
+  DIVA MODELS — ЛЕНДИНГ ДЛЯ РЕКЛАМЫ (заявка кандидата)
+  ############################################################################
+
+  Отдельная самостоятельная страница. Ничего не подключает с сайта — весь
+  CSS, вёрстка и скрипт лежат прямо здесь, в этом файле. Можно править и
+  заливать отдельно, не трогая index.html.
+
+  КУДА ВСТАВЛЯТЬ ПИКСЕЛЬ — 4 места, все помечены "PIXEL SLOT":
+
+    1. BASE CODE   — в <head>, сразу ниже. Базовый код пикселя.
+    2. PAGE VIEW   — сразу после <body>. Просмотр страницы.
+    3. FORM VIEW   — перед формой. Показ формы (ViewContent).
+    4. LEAD SUBMIT — в самом низу файла, внутри скрипта. Конверсия (Lead).
+
+  Ищите по слову PIXEL — все четыре блока подписаны крупными рамками.
+
+  ФОРМА идентична той, что открывается в попапе на главной странице
+  (apply-form.html). Если меняете поля здесь — поменяйте и там.
+
+  ЗАЯВКА пока никуда не отправляется: показывается экран "Заявка отправлена".
+  Реальный endpoint подключается в блоке TODO рядом с PIXEL SLOT 4.
+  ############################################################################
+-->
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Заявка кандидата — DIVA MODELS</title>
+<meta name="description" content="Оставьте заявку, и наш менеджер свяжется с вами в Telegram, чтобы обсудить условия и подобрать проверенное OnlyFans-агентство.">
+<meta name="robots" content="noindex, nofollow">
+
+<!-- ############################################################################
+     PIXEL SLOT 1 of 4 — BASE CODE (head)
+     ############################################################################
+     Paste the ad platform's base/init snippet here. This is the one that goes
+     "on every page" in the platform's instructions.
+
+       Meta:   <script>!function(f,b,e,v,n,t,s){...}; fbq('init','ID');</script>
+       TikTok: <script>!function(w,d,t){...}; ttq.load('ID');</script>
+       Google: <script async src="https://www.googletagmanager.com/gtag/js?id=ID"></script>
+
+     ######################################################################### -->
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  :root{
+    --bg: #050505;
+    --bg-elevated: #0d0d0e;
+    --bg-floating: #131315;
+    --border: rgba(255,255,255,0.09);
+    --border-soft: rgba(255,255,255,0.05);
+    --text: #ffffff;
+    --text-muted: #9a9a9f;
+    --text-dim: #67676c;
+    --accent: #d31e3d;
+    --accent-bright: #ff3d5e;
+    --accent-dim: rgba(211,30,61,0.14);
+  }
+  *{ box-sizing: border-box; }
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  .font-display{ font-family: 'Fraunces', serif; }
+  h1, h2, h3{ text-wrap: balance; }
+  p{ text-wrap: pretty; }
+  ::selection{ background: var(--accent); color: #fff; }
+
+  .page-bg{
+    background:
+      radial-gradient(60% 45% at 15% 0%, rgba(211,30,61,0.16), transparent 60%),
+      radial-gradient(45% 40% at 90% 100%, rgba(211,30,61,0.10), transparent 60%),
+      var(--bg);
+    min-height: 100vh;
+  }
+
+  .btn{
+    position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 13px 18px; border-radius: 999px;
+    font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 11.5px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    transition: transform 0.45s cubic-bezier(.16,.8,.24,1), box-shadow 0.45s cubic-bezier(.16,.8,.24,1), background-color 0.3s ease, border-color 0.3s ease;
+    white-space: nowrap;
+  }
+  @media (min-width: 400px){
+    .btn{ gap: 10px; padding: 15px 26px; font-size: 13px; letter-spacing: 0.06em; }
+  }
+  .btn:active{ transform: scale(0.97); }
+  .btn-primary{
+    background: var(--accent); color: #fff;
+    box-shadow: 0 8px 24px -8px rgba(211,30,61,0.55), 0 2px 8px -2px rgba(211,30,61,0.4);
+  }
+  .btn-primary:hover{ background: var(--accent-bright); transform: translateY(-2px); box-shadow: 0 14px 32px -10px rgba(211,30,61,0.65); }
+  .btn-primary:focus-visible{ outline: 2px solid #fff; outline-offset: 3px; }
+  .btn-ghost{ background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-ghost:hover{ border-color: rgba(255,255,255,0.35); transform: translateY(-2px); background: rgba(255,255,255,0.04); }
+  .btn-ghost:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .surface-floating{ background: var(--bg-floating); border: 1px solid var(--border); }
+  .hr-soft{ border-top: 1px solid var(--border-soft); }
+
+  .af-field{ position: relative; }
+  .af-field input[type="text"],
+  .af-field input[type="tel"]{
+    width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border);
+    color: #fff; font-family: 'Manrope', sans-serif; font-size: 15px;
+    padding: 10px 2px; outline: none;
+    transition: border-color 0.3s ease;
+  }
+  .af-field input::placeholder{ color: var(--text-dim); }
+  .af-field input:focus{ border-bottom-color: var(--accent); }
+  .af-field label{
+    display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px;
+  }
+
+  .af-pill{
+    flex: 1; text-align: center; padding: 11px 8px; border-radius: 10px;
+    font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.03em; text-transform: uppercase;
+    color: var(--text-dim); border: 1px solid var(--border);
+    background: transparent; cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .af-pill:hover:not(.active){ color: #fff; border-color: rgba(255,255,255,0.3); }
+  .af-pill.active{ color: #fff; background: var(--accent-dim); border-color: rgba(211,30,61,0.6); }
+  .af-pill:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* Needs to outrank `.af-field label`, which otherwise forces display:block
+     here and drops the flex layout — gap included — on the floor. */
+  .af-field label.af-check,
+  .af-check{
+    display: flex; align-items: center; gap: 12px; cursor: pointer;
+    margin-bottom: 0;
+  }
+  .af-check input{
+    appearance: none; -webkit-appearance: none; flex-shrink: 0;
+    width: 18px; height: 18px; border-radius: 5px;
+    border: 1px solid var(--border); background: transparent; cursor: pointer;
+    position: relative; transition: all 0.2s ease;
+  }
+  .af-check input:checked{ background: var(--accent); border-color: var(--accent); }
+  .af-check input:checked::after{
+    content: ''; position: absolute; left: 5px; top: 1px;
+    width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .af-check span{ font-size: 13px; line-height: 1.5; color: var(--text-muted); }
+
+  .af-error{ color: var(--accent-bright); font-size: 12px; margin-top: 6px; display: none; }
+  .af-field.af-invalid input{ border-bottom-color: var(--accent-bright); }
+  .af-field.af-invalid .af-error{ display: block; }
+  .af-group.af-invalid .af-pill{ border-color: rgba(255,61,94,0.5); }
+  .af-group.af-invalid .af-error{ display: block; }
+
+  /* Layout — one column on phones, two from 768px so the form clears the fold */
+  #af-form{ margin-top: 36px; }
+  .af-grid{ display: flex; flex-direction: column; gap: 28px; }
+  .af-footer{ margin-top: 28px; }
+  .af-consents{ display: flex; flex-direction: column; gap: 16px; }
+  .af-submit{ width: 100%; margin-top: 28px; }
+
+  @media (min-width: 768px){
+    #af-form{ margin-top: 22px; }
+    .af-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto;
+      grid-auto-flow: column;
+      column-gap: 44px; row-gap: 16px;
+      align-items: start;
+    }
+    .af-footer{
+      margin-top: 20px;
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 40px;
+    }
+    .af-consents{ flex: 1; gap: 12px; }
+    .af-submit{ width: auto; margin-top: 0; flex-shrink: 0; }
+  }
+
+
+  /* Ловушка для спам-ботов: человек этого поля не видит и не может заполнить. */
+  .af-hp{ position: absolute; left: -9999px; top: 0; width: 1px; height: 1px; overflow: hidden; }
+
+  #af-success{ display: none; }
+  #af-success.active{ display: block; }
+  #af-form-view.hidden{ display: none; }
+</style>
+
+<!-- ===== Иконки сайта ===== -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#050505">
+
+<!-- ===== Ссылка на себя и превью для соцсетей ===== -->
+<link rel="canonical" href="https://models-diva.com/apply.html">
+<meta property="og:site_name" content="DIVA MODELS">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="uk_UA">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://models-diva.com/apply.html">
+<meta property="og:title" content="Заявка кандидата — DIVA MODELS">
+<meta property="og:description" content="Оставьте заявку, и наш менеджер свяжется с вами в Telegram, чтобы обсудить условия и подобрать проверенное OnlyFans-агентство.">
+<meta property="og:image" content="https://models-diva.com/images/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="DIVA MODELS — рекрутинговое агентство для OnlyFans-моделей">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Заявка кандидата — DIVA MODELS">
+<meta name="twitter:description" content="Оставьте заявку, и наш менеджер свяжется с вами в Telegram, чтобы обсудить условия и подобрать проверенное OnlyFans-агентство.">
+<meta name="twitter:image" content="https://models-diva.com/images/og-cover.jpg">
+</head>
+<body class="antialiased">
+
+<!-- ############################################################################
+     PIXEL SLOT 2 of 4 — PAGE VIEW
+     ############################################################################
+     Fires once, as soon as somebody lands on this page from an ad.
+
+       Meta:   <script>fbq('track','PageView');</script>
+       TikTok: <script>ttq.page();</script>
+
+     ######################################################################### -->
+
+
+<div class="page-bg">
+
+  <header class="max-w-[880px] mx-auto px-5 sm:px-8 pt-8 md:pt-12 flex items-center justify-between gap-4">
+    <a href="index.html" class="font-display text-xl md:text-2xl tracking-tight text-white inline-flex items-center gap-2">
+      DIVA <span class="text-[var(--accent)]">MODELS</span>
+    </a>
+    <div class="lang-switcher" role="group" aria-label="Язык сайта"><span class="lang-btn active" data-lang="ru" role="button" tabindex="0" aria-pressed="true">RU</span><span class="lang-divider" aria-hidden="true">|</span><span class="lang-btn" data-lang="ua" role="button" tabindex="0" aria-pressed="false">UA</span></div>
+  </header>
+
+  <main class="max-w-[880px] mx-auto px-5 sm:px-8 py-10 md:py-14">
+    <div class="surface-floating rounded-2xl p-6 sm:p-8 md:p-10 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.8)]">
+
+      <!-- ####################################################################
+           PIXEL SLOT 3 of 4 — FORM VIEW
+           ####################################################################
+           Fires when the form is shown. On this page that is on load.
+
+             Meta:   <script>fbq('track','ViewContent');</script>
+             TikTok: <script>ttq.track('ViewContent');</script>
+
+           ################################################################# -->
+
+
+      <!-- ======================================================================
+           THE FORM — copied verbatim from apply-form.html (the popup version),
+           so both stay visually and functionally identical.
+           ====================================================================== -->
+      <div id="af-root">
+<div id="af-form-view">
+  <div class="text-center" id="af-header">
+    <h3 class="font-display text-3xl text-white lang" data-ru="Стать <span class=&quot;text-[var(--accent)]&quot;>моделью</span>" data-ua="Стати <span class=&quot;text-[var(--accent)]&quot;>моделлю</span>">Стать <span class="text-[var(--accent)]">моделью</span></h3>
+    <p class="text-[var(--text-muted)] text-sm leading-relaxed mt-3 max-w-sm md:max-w-xl mx-auto lang" data-ru="Оставьте свои данные, и наш менеджер свяжется с вами в Telegram для обсуждения условий." data-ua="Залиште свої дані, і наш менеджер зв'яжеться з вами в Telegram для обговорення умов.">
+      Оставьте свои данные, и наш менеджер свяжется с вами в Telegram для обсуждения условий.
+    </p>
+  </div>
+
+  <form id="af-form" novalidate>
+      <div class="af-hp" aria-hidden="true">
+        <label class="lang" data-ru="Не заполняйте это поле <input type=&quot;text&quot; name=&quot;website&quot; id=&quot;af-website&quot; tabindex=&quot;-1&quot; autocomplete=&quot;off&quot;>" data-ua="Не заповнюйте це поле <input type=&quot;text&quot; name=&quot;website&quot; id=&quot;af-website&quot; tabindex=&quot;-1&quot; autocomplete=&quot;off&quot;>">Не заполняйте это поле
+          <input type="text" name="website" id="af-website" tabindex="-1" autocomplete="off">
+        </label>
+      </div>
+
+    <!-- Column 1 takes the three text fields, column 2 the three choice
+         groups, so the whole form clears the fold on a laptop. Stacks back
+         to one column below 768px, in source order. -->
+    <div class="af-grid">
+    <div class="af-field">
+      <label class="lang" for="af-name" data-ru="Ваше имя" data-ua="Ваше ім'я">Ваше имя</label>
+      <input type="text" id="af-name" name="name" autocomplete="name" placeholder="Имя" data-ph-ru="Имя" data-ph-ua="Ім'я" required>
+      <div class="af-error lang" data-ru="Пожалуйста, укажите ваше имя." data-ua="Будь ласка, вкажіть ваше ім'я.">Пожалуйста, укажите ваше имя.</div>
+    </div>
+
+    <div class="af-field">
+      <label class="lang" for="af-phone" data-ru="Номер телефона" data-ua="Номер телефону">Номер телефона</label>
+      <input type="tel" id="af-phone" name="phone" autocomplete="tel" placeholder="+380" data-ph-ru="+380" data-ph-ua="+380" required>
+      <div class="af-error lang" data-ru="Пожалуйста, укажите номер телефона." data-ua="Будь ласка, вкажіть номер телефону.">Пожалуйста, укажите номер телефона.</div>
+    </div>
+
+    <div class="af-field">
+      <label class="lang" for="af-telegram" data-ru="Ваш Telegram (@username)" data-ua="Ваш Telegram (@username)">Ваш Telegram (@username)</label>
+      <input type="text" id="af-telegram" name="telegram" autocomplete="off" placeholder="@username" data-ph-ru="@username" data-ph-ua="@username" required>
+      <div class="af-error lang" data-ru="Пожалуйста, укажите ваш Telegram." data-ua="Будь ласка, вкажіть ваш Telegram.">Пожалуйста, укажите ваш Telegram.</div>
+    </div>
+
+    <div class="af-group" data-group="age">
+      <label class="block text-xs uppercase tracking-[0.08em] font-semibold text-[var(--text-dim)] mb-3 lang" data-ru="Сколько вам лет?" data-ua="Скільки вам років?">Сколько вам лет?</label>
+      <div class="flex gap-2">
+        <button type="button" class="af-pill" data-value="18-22">18-22</button>
+        <button type="button" class="af-pill" data-value="23-26">23-26</button>
+        <button type="button" class="af-pill" data-value="27-30+">27-30+</button>
+      </div>
+      <div class="af-error lang" data-ru="Пожалуйста, выберите возраст." data-ua="Будь ласка, оберіть вік.">Пожалуйста, выберите возраст.</div>
+    </div>
+
+    <div class="af-group" data-group="experience">
+      <label class="block text-xs uppercase tracking-[0.08em] font-semibold text-[var(--text-dim)] mb-3 lang" data-ru="Ваш опыт на OnlyFans" data-ua="Ваш досвід на OnlyFans">Ваш опыт на OnlyFans</label>
+      <div class="flex gap-2">
+        <button type="button" class="af-pill lang" data-value="none" data-ru="Нет" data-ua="Ні">Нет</button>
+        <button type="button" class="af-pill lang" data-value="model" data-ru="Модель" data-ua="Модель">Модель</button>
+        <button type="button" class="af-pill lang" data-value="operator" data-ru="Оператор" data-ua="Оператор">Оператор</button>
+      </div>
+      <div class="af-error lang" data-ru="Пожалуйста, выберите вариант." data-ua="Будь ласка, оберіть варіант.">Пожалуйста, выберите вариант.</div>
+    </div>
+
+    <div class="af-group" data-group="taboo18">
+      <label class="block text-xs uppercase tracking-[0.08em] font-semibold text-[var(--text-dim)] mb-3 lang" data-ru="Готовы ли вы снимать контент 18+?" data-ua="Чи готові ви знімати контент 18+?">Готовы ли вы снимать контент 18+?</label>
+      <div class="flex gap-2">
+        <button type="button" class="af-pill lang" data-value="yes" data-ru="Да" data-ua="Так">Да</button>
+        <button type="button" class="af-pill lang" data-value="no" data-ru="Нет" data-ua="Ні">Нет</button>
+      </div>
+      <div class="af-error lang" data-ru="Пожалуйста, выберите вариант." data-ua="Будь ласка, оберіть варіант.">Пожалуйста, выберите вариант.</div>
+    </div>
+    </div>
+
+    <div class="af-footer">
+      <div class="af-field af-consents">
+        <label class="af-check">
+          <input type="checkbox" id="af-consent-age" required>
+          <span class="lang" data-ru="Я подтверждаю, что мне 18+" data-ua="Я підтверджую, що мені 18+">Я подтверждаю, что мне 18+</span>
+        </label>
+        <label class="af-check">
+          <input type="checkbox" id="af-consent-data" required>
+          <span class="lang" data-ru="Я согласна, что Diva Models может обработать данные для разбора и связи со мной." data-ua="Я згодна, що Diva Models може обробити дані для розбору та зв'язку зі мною.">Я согласна, что Diva Models может обработать данные для разбора и связи со мной.</span>
+        </label>
+        <div class="af-error lang" data-ru="Необходимо подтвердить оба пункта." data-ua="Необхідно підтвердити обидва пункти.">Необходимо подтвердить оба пункта.</div>
+      </div>
+
+      <button type="submit" class="btn btn-primary af-submit justify-center lang" data-ru="Отправить заявку" data-ua="Надіслати заявку">
+        Отправить заявку
+      </button>
+    </div>
+
+      <div class="af-error lang" id="af-send-error" style="display:none; margin-top:14px;" data-ru="Не удалось отправить заявку. Попробуйте ещё раз или <a href=&quot;https://t.me/diva_modelss&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; style=&quot;text-decoration:underline;&quot;>напишите нам в Telegram</a> — ответим сразу." data-ua="Не вдалося надіслати заявку. Спробуйте ще раз або <a href=&quot;https://t.me/diva_modelss&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; style=&quot;text-decoration:underline;&quot;>напишіть нам у Telegram</a> — відповімо одразу.">
+        Не удалось отправить заявку. Попробуйте ещё раз или
+        <a href="https://t.me/diva_modelss" target="_blank" rel="noopener" style="text-decoration:underline;">напишите нам в Telegram</a> — ответим сразу.
+      </div>
+
+  </form>
+</div>
+
+<div id="af-success" class="text-center py-6">
+  <div class="w-14 h-14 rounded-full bg-[var(--accent-dim)] border border-[rgba(211,30,61,0.5)] flex items-center justify-center mx-auto">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+  </div>
+  <h3 class="font-display text-2xl text-white mt-6 lang" data-ru="Заявка отправлена!" data-ua="Заявку надіслано!">Заявка отправлена!</h3>
+  <p class="text-[var(--text-muted)] text-sm leading-relaxed mt-3 max-w-sm mx-auto lang" data-ru="Мы связываемся с кандидатами в Telegram. Пожалуйста, периодически проверяйте личные сообщения или напишите нашему менеджеру первыми, чтобы получить ответ как можно быстрее!" data-ua="Ми зв'язуємось із кандидатками в Telegram. Будь ласка, періодично перевіряйте приватні повідомлення або напишіть нашому менеджеру першими, щоб отримати відповідь якнайшвидше!">
+    Мы связываемся с кандидатами в Telegram. Пожалуйста, периодически проверяйте личные сообщения или напишите нашему менеджеру первыми, чтобы получить ответ как можно быстрее!
+  </p>
+  <div class="mt-8 flex flex-col sm:flex-row sm:justify-center gap-3">
+    <a href="https://t.me/diva_modelss" target="_blank" rel="noopener" class="btn btn-primary w-full sm:w-auto justify-center lang" data-ru="Написать менеджеру" data-ua="Написати менеджеру">Написать менеджеру</a>
+    <a href="index.html" class="btn btn-ghost w-full sm:w-auto justify-center lang" data-ru="Перейти на сайт" data-ua="Перейти на сайт">Перейти на сайт</a>
+  </div>
+</div>
+
+      </div>
+
+    </div>
+
+    <p class="text-[var(--text-dim)] text-xs leading-relaxed text-center mt-8 max-w-md mx-auto lang" data-ru="Отправляя заявку, вы подтверждаете, что вам исполнилось 18 лет. Мы не передаём ваши данные третьим лицам без вашего согласия." data-ua="Надсилаючи заявку, ви підтверджуєте, що вам виповнилося 18 років. Ми не передаємо ваші дані третім особам без вашої згоди.">
+      Отправляя заявку, вы подтверждаете, что вам исполнилось 18 лет.
+      Мы не передаём ваши данные третьим лицам без вашего согласия.
+    </p>
+  </main>
+
+  <footer class="max-w-[880px] mx-auto px-5 sm:px-8 pb-10">
+    <div class="hr-soft pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-[var(--text-dim)] text-xs lang" data-ru="© 2026 DIVA MODELS. Все права защищены." data-ua="© 2026 DIVA MODELS. Усі права захищені.">© 2026 DIVA MODELS. Все права защищены.</p>
+      <p class="text-[var(--text-dim)] text-xs lang" data-ru="Только для лиц старше 18 лет." data-ua="Тільки для осіб старше 18 років.">Только для лиц старше 18 лет.</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('af-root');
+  if(!root) return;
+
+  // Pill toggle groups
+  root.querySelectorAll('.af-group').forEach(function(group){
+    group.querySelectorAll('.af-pill').forEach(function(pill){
+      pill.addEventListener('click', function(){
+        group.querySelectorAll('.af-pill').forEach(function(p){ p.classList.remove('active'); });
+        pill.classList.add('active');
+        group.classList.remove('af-invalid');
+      });
+    });
+  });
+
+  function pickedValue(name){
+    var pill = root.querySelector('[data-group="' + name + '"] .af-pill.active');
+    return pill ? pill.dataset.value : '';
+  }
+
+  var form = document.getElementById('af-form');
+  var successView = document.getElementById('af-success');
+  var formView = document.getElementById('af-form-view');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var valid = true;
+
+    ['af-name', 'af-phone', 'af-telegram'].forEach(function(id){
+      var input = document.getElementById(id);
+      var field = input.closest('.af-field');
+      if(!input.value.trim()){ field.classList.add('af-invalid'); valid = false; }
+      else{ field.classList.remove('af-invalid'); }
+    });
+
+    // Pill groups start with nothing selected — each one must be answered
+    root.querySelectorAll('.af-group').forEach(function(group){
+      if(!group.querySelector('.af-pill.active')){ group.classList.add('af-invalid'); valid = false; }
+      else{ group.classList.remove('af-invalid'); }
+    });
+
+    ['af-consent-age', 'af-consent-data'].forEach(function(id){
+      var input = document.getElementById(id);
+      if(!input.checked) valid = false;
+    });
+    var consentField = document.getElementById('af-consent-age').closest('.af-field');
+    if(!document.getElementById('af-consent-age').checked || !document.getElementById('af-consent-data').checked){
+      consentField.classList.add('af-invalid');
+      valid = false;
+    } else {
+      consentField.classList.remove('af-invalid');
+    }
+
+    if(!valid){ return; }
+
+    var data = {
+      name: document.getElementById('af-name').value.trim(),
+      phone: document.getElementById('af-phone').value.trim(),
+      telegram: document.getElementById('af-telegram').value.trim(),
+      age: pickedValue('age'),
+      experience: pickedValue('experience'),
+      taboo18: pickedValue('taboo18')
+    };
+
+    // ============================================================
+    // Адрес, куда уходят заявки. Продублирован в apply.html и
+    // apply-form.html — если поменяется, правьте в обоих файлах.
+    // ============================================================
+    var LEAD_ENDPOINT = 'https://diva-leads.diva-models-001.workers.dev';
+
+    data.website = document.getElementById('af-website').value;   // honeypot
+    data.source = 'Рекламный лендинг';
+    data.page = window.location.href;
+    data.submittedAt = new Date().toLocaleString('ru-RU');
+
+    var sendError = document.getElementById('af-send-error');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var originalLabel = submitBtn.textContent;
+    sendError.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Отправляем…';
+
+    fetch(LEAD_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(function(res){ return res.ok ? res.json() : Promise.reject(res.status); })
+    .then(function(result){
+      if(!result || !result.ok) return Promise.reject('rejected');
+
+      // ############################################################
+      // PIXEL SLOT 4 of 4 — LEAD SUBMIT  (главная конверсия)
+      // ############################################################
+      // Fires once, right after a valid application is submitted.
+      //
+      //   Meta:   fbq('track', 'Lead');
+      //   TikTok: ttq.track('SubmitForm');
+      //   Google: gtag('event', 'conversion', {send_to: 'AW-XXX/YYY'});
+      //
+      // ############################################################
+
+      formView.classList.add('hidden');
+      successView.classList.add('active');
+    })
+    .catch(function(){
+      // Ничего не притворяемся: заявка не ушла. Показываем это и даём прямой
+      // контакт, чтобы лид не потерялся, и разблокируем кнопку для повтора.
+      sendError.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+    });
+  });
+})();
+</script>
+
+<script src="assets/lang.js"></script>
+</body>
+</html>
