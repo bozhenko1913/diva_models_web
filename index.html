@@ -1,0 +1,1481 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIVA MODELS — Рекрутинговое агентство для OnlyFans-моделей</title>
+<meta name="description" content="DIVA MODELS — рекрутинговая компания, которая помогает моделям найти надёжное и выгодное сотрудничество с проверенными OnlyFans-агентствами по всему миру.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="antialiased">
+
+<svg class="grain" xmlns="http://www.w3.org/2000/svg">
+  <filter id="noiseFilter">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="saturate" values="0"></feColorMatrix>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#noiseFilter)"></rect>
+</svg>
+
+<!-- ================= HEADER ================= -->
+<header id="site-header" class="sticky top-0 left-0 right-0 z-50 bg-[#0a0a0b] border-b border-[var(--border-soft)]">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center justify-between h-20 md:h-24">
+    <a href="#top" class="font-display text-xl md:text-2xl tracking-tight text-white flex items-center gap-2">
+      DIVA <span class="text-[var(--accent)]">MODELS</span>
+    </a>
+
+    <nav class="hidden xl:flex items-center gap-8 text-[13px] font-semibold uppercase tracking-[0.08em]">
+      <a href="#benefits" class="nav-link">Условия</a>
+      <a href="#results" class="nav-link">Кейсы</a>
+      <a href="#market" class="nav-link">Рынок иллюзий</a>
+      <a href="#process" class="nav-link">Как это работает</a>
+      <a href="#blog" class="nav-link">Блог</a>
+      <a href="#about" class="nav-link">О нас</a>
+    </nav>
+
+    <div class="hidden xl:block">
+      <a href="#contact" data-open-apply class="btn btn-primary">
+        Стать моделью
+        <span class="btn-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+
+    <button id="menu-btn" aria-label="Открыть меню" class="xl:hidden w-11 h-11 rounded-full border border-[var(--border)] flex items-center justify-center">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M1 4.5H17M1 9H17M1 13.5H17" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div id="mobile-menu" class="hidden-menu fixed inset-0 z-[60] bg-[#050505]/98 backdrop-blur-md flex flex-col">
+  <div class="flex items-center justify-between h-20 px-6">
+    <span class="font-display text-xl text-white">DIVA <span class="text-[var(--accent)]">MODELS</span></span>
+    <button id="menu-close" aria-label="Закрыть меню" class="w-11 h-11 rounded-full border border-[var(--border)] flex items-center justify-center">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 1L15 15M15 1L1 15" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <nav class="flex flex-col gap-2 px-6 mt-6 text-2xl font-display">
+    <a href="#benefits" class="mobile-link py-3 border-b border-[var(--border-soft)] text-white">Условия</a>
+    <a href="#results" class="mobile-link py-3 border-b border-[var(--border-soft)] text-white">Кейсы</a>
+    <a href="#market" class="mobile-link py-3 border-b border-[var(--border-soft)] text-white">Рынок иллюзий</a>
+    <a href="#process" class="mobile-link py-3 border-b border-[var(--border-soft)] text-white">Как это работает</a>
+    <a href="#blog" class="mobile-link py-3 border-b border-[var(--border-soft)] text-white">Блог</a>
+    <a href="#about" class="mobile-link py-3 border-b border-[var(--border-soft)] text-white">О нас</a>
+  </nav>
+  <div class="px-6 mt-8">
+    <a href="#contact" data-open-apply class="mobile-link btn btn-primary w-full justify-center">Стать моделью</a>
+  </div>
+</div>
+
+<!-- Calculator modal -->
+<div id="calculator-modal" class="fixed inset-0 z-[70]" aria-hidden="true">
+  <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" data-modal-dismiss></div>
+  <div class="relative min-h-full flex items-center justify-center p-4 md:p-8" data-modal-dismiss>
+    <div class="modal-panel surface-floating rounded-2xl p-7 md:p-10 w-full max-w-3xl max-h-[92vh] overflow-y-auto shadow-[0_40px_80px_-20px_rgba(0,0,0,0.65)] relative">
+      <button type="button" data-modal-close aria-label="Закрыть калькулятор" class="absolute top-5 right-5 md:top-6 md:right-6 w-10 h-10 rounded-full border border-[var(--border)] flex items-center justify-center transition-colors hover:border-white/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--accent)]">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 1L15 15M15 1L1 15" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </button>
+
+      <span class="eyebrow">Калькулятор дохода</span>
+      <h3 class="font-display text-2xl md:text-3xl text-white mt-3 pr-10">Рассчитай&nbsp;свой потенциальный&nbsp;доход</h3>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-8 mt-8">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <label class="text-xs uppercase tracking-[0.1em] text-[var(--text-muted)] font-semibold">Подписчики</label>
+            <span id="f-val" class="font-display text-lg text-white">1 000</span>
+          </div>
+          <input type="range" id="followers" min="200" max="150000" step="100" value="1000">
+        </div>
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <label class="text-xs uppercase tracking-[0.1em] text-[var(--text-muted)] font-semibold">Цена подписки</label>
+            <span id="p-val" class="font-display text-lg text-white">$10</span>
+          </div>
+          <input type="range" id="price" min="3" max="50" step="1" value="10">
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-10">
+        <div>
+          <label class="text-xs uppercase tracking-[0.1em] text-[var(--text-muted)] font-semibold block mb-3">Твой уровень</label>
+          <div class="toggle-row grid grid-cols-2 gap-2" id="exp-toggle">
+            <button type="button" class="step-toggle active" data-value="0">Новичок</button>
+            <button type="button" class="step-toggle" data-value="1">Растущий</button>
+            <button type="button" class="step-toggle" data-value="2">Стабильный</button>
+            <button type="button" class="step-toggle" data-value="3">Топ-модель</button>
+          </div>
+        </div>
+        <div>
+          <label class="text-xs uppercase tracking-[0.1em] text-[var(--text-muted)] font-semibold block mb-3">Твои табу</label>
+          <div class="flex gap-2" id="taboo-toggle">
+            <button type="button" class="step-toggle" data-value="0">Много</button>
+            <button type="button" class="step-toggle active" data-value="1">Стандарт</button>
+            <button type="button" class="step-toggle" data-value="2">Без табу</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hr-soft pt-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
+        <div class="min-w-0">
+          <span class="text-xs uppercase tracking-[0.1em] text-[var(--text-muted)] font-semibold">Потенциальный&nbsp;доход в&nbsp;месяц</span>
+          <div id="calc-result" class="font-display text-3xl md:text-4xl text-white mt-2 tracking-tight break-words">$2 000 – $2 200</div>
+        </div>
+        <a href="#contact" data-modal-close data-open-apply class="btn btn-primary w-full sm:w-auto">
+          Получить оффер
+          <span class="btn-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+      </div>
+      <p class="text-xs text-[var(--text-dim)] mt-6 leading-relaxed">Цифры ориентировочные — у каждого агентства индивидуальные условия, бонусы и трафик. Точный оффер вы получите после&nbsp;собеседования.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Image lightbox -->
+<div id="image-lightbox" class="fixed inset-0 z-[80]" aria-hidden="true">
+  <div class="absolute inset-0 bg-black/85 backdrop-blur-sm" data-modal-dismiss></div>
+  <div class="relative min-h-full flex items-center justify-center p-4 md:p-10" data-modal-dismiss>
+    <button type="button" data-modal-close aria-label="Закрыть изображение" class="absolute top-5 right-5 md:top-8 md:right-8 w-11 h-11 rounded-full border border-[var(--border)] bg-[#0a0a0b] flex items-center justify-center transition-colors hover:border-white/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--accent)] z-10">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 1L15 15M15 1L1 15" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+    </button>
+    <img id="lightbox-img" src="" alt="" class="lightbox-img rounded-xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)]">
+  </div>
+</div>
+
+<!-- Apply modal (content injected from apply-form.html) -->
+<div id="apply-modal" class="fixed inset-0 z-[90]" aria-hidden="true">
+  <div class="absolute inset-0 bg-black/85 backdrop-blur-sm" data-modal-dismiss></div>
+  <div class="relative min-h-full flex items-center justify-center p-4 md:p-6" data-modal-dismiss>
+    <div class="modal-panel surface-floating rounded-2xl p-7 md:p-8 w-full max-w-lg md:max-w-3xl max-h-[92vh] overflow-y-auto shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] relative">
+      <button type="button" data-modal-close aria-label="Закрыть форму" class="absolute top-5 right-5 md:top-6 md:right-6 w-10 h-10 rounded-full border border-[var(--border)] flex items-center justify-center transition-colors hover:border-white/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--accent)] z-10">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 1L15 15M15 1L1 15" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </button>
+      <div id="apply-modal-content">
+        <div class="py-20 text-center text-[var(--text-dim)] text-sm">Загрузка формы…</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="relative h-[92vh] sm:h-[88vh] min-h-[660px] max-h-[880px] w-full overflow-hidden bg-[var(--bg)]">
+  <picture>
+    <source type="image/webp" sizes="100vw" srcset="images/hero-1200.webp 1200w, images/hero-1800.webp 1800w, images/hero-2400.webp 2400w">
+    <img src="images/hero-1800.jpg" sizes="100vw" srcset="images/hero-1200.jpg 1200w, images/hero-1800.jpg 1800w, images/hero-2400.jpg 2400w"
+         width="2400" height="1345" fetchpriority="high" decoding="async"
+         alt="Модель показывает статистику заработка в приложении DIVA MODELS"
+         class="absolute top-0 left-0 w-full h-[56%] sm:h-[64%] md:h-full object-cover object-[42%_28%] md:object-[center_32%]">
+  </picture>
+  <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.55) 30%, rgba(5,5,5,0.08) 56%, rgba(5,5,5,0.35) 100%);"></div>
+  <div class="absolute inset-0" style="background:linear-gradient(115deg, rgba(211,30,61,0.22), transparent 45%);mix-blend-mode:multiply;"></div>
+
+  <div class="relative z-10 h-full max-w-[1400px] mx-auto px-6 md:px-10 flex flex-col">
+    <span class="reveal visible eyebrow mt-8 md:mt-10">Diva® Models</span>
+
+    <div class="mt-auto pb-10 md:pb-14 grid lg:grid-cols-12 gap-8 items-end">
+      <div class="lg:col-span-7 reveal visible">
+        <h1 class="hero-h1 font-extrabold leading-[0.96] tracking-[-0.03em] text-white sm:text-[3.4rem] md:text-[4.6rem]">
+          Доход от $2 000+<br>прямо&nbsp;из&nbsp;дома
+        </h1>
+      </div>
+      <div class="lg:col-span-5 reveal reveal-delay-2 visible lg:pl-6">
+        <p class="hero-subtext text-white/80 leading-relaxed max-w-[29rem] md:max-w-xl">
+          Помогаем моделям найти надёжное сотрудничество с проверенными OnlyFans и Fansly-агентствами по всему миру.
+        </p>
+        <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-4">
+          <a href="#contact" data-open-apply class="btn w-full sm:w-auto" style="background:#fff;color:#0a0a0a;box-shadow:0 8px 24px -8px rgba(0,0,0,0.5);">
+            Стать моделью
+            <span class="btn-arrow" style="background:#0a0a0a;">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+          <button type="button" data-open-calculator class="btn btn-ghost w-full sm:w-auto" style="border-color:rgba(255,255,255,0.35);">
+            Рассчитать доход
+            <span class="btn-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACHIEVEMENTS STAT ROW ================= -->
+<section class="relative bg-[var(--bg)] py-24 md:py-32">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+    <div class="grid lg:grid-cols-12 gap-10 items-end mb-16">
+      <div class="lg:col-span-4 reveal">
+        <span class="eyebrow">Достижения</span>
+      </div>
+      <div class="lg:col-span-8 reveal reveal-delay-1">
+        <h2 class="font-display text-3xl md:text-[2.6rem] leading-[1.1] tracking-[-0.02em] text-white">Реальные цифры говорят громче любых слов</h2>
+      </div>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-10 md:gap-16">
+      <div class="reveal">
+        <div class="font-display text-5xl md:text-6xl text-white tracking-tight"><span class="counter" data-count-to="1000">0</span>+</div>
+        <div class="hr-soft mt-6 mb-5"></div>
+        <div class="font-semibold text-white mb-1">Трудоустроенных&nbsp;моделей</div>
+        <div class="text-[var(--text-muted)] text-sm leading-relaxed">С 2021 года помогли более чем тысяче моделей найти надёжное&nbsp;агентство</div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="font-display text-5xl md:text-6xl text-white tracking-tight"><span class="counter" data-count-to="700">0</span>+</div>
+        <div class="hr-soft mt-6 mb-5"></div>
+        <div class="font-semibold text-white mb-1">Агентств-партнёров</div>
+        <div class="text-[var(--text-muted)] text-sm leading-relaxed">Прямые контракты с&nbsp;проверенными командами Украины и&nbsp;Европы</div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="font-display text-5xl md:text-6xl text-white tracking-tight"><span class="counter" data-count-to="2021">0</span></div>
+        <div class="hr-soft mt-6 mb-5"></div>
+        <div class="font-semibold text-white mb-1">Год&nbsp;основания</div>
+        <div class="text-[var(--text-muted)] text-sm leading-relaxed">Сильная команда экспертов по поиску, подготовке и запуску&nbsp;моделей</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BENEFITS ================= -->
+<section id="benefits" class="relative mesh-soft py-24 md:py-32">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+
+    <div class="text-left md:text-center max-w-2xl mx-auto mb-6 reveal">
+      <span class="eyebrow md:justify-center">Открыт набор в топ-агентства</span>
+    </div>
+    <h2 class="reveal reveal-delay-1 font-display text-left md:text-center text-3xl md:text-[2.75rem] leading-[1.08] tracking-[-0.02em] text-white max-w-3xl mx-auto">
+      Условия сотрудничества и&nbsp;обязанности агентства
+    </h2>
+    <p class="reveal reveal-delay-2 text-left md:text-center text-[var(--text-muted)] max-w-2xl mx-auto mt-6 leading-relaxed">
+      Набор в топовые агентства Украины и Европы открыт на постоянной основе! Работаем с ведущими платформами, такими как OnlyFans и Fansly. Доход моделей — от <span class="text-white font-medium">$2 000+</span>, и верхнего предела не существует!
+    </p>
+
+    <div class="cond-stack grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-16">
+
+      <div class="reveal card-hover surface rounded-2xl p-8 cond-card" data-num="01">
+        <div class="card-head">
+          <div class="card-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><path d="M17 20v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M10 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 20v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-display text-xl text-white">Команда</h3>
+        </div>
+        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Профессиональная команда гарантирует всестороннюю поддержку, уважительное общение и слаженную работу штата специалистов: чатеры, контент-менеджеры,&nbsp;маркетологи.</p>
+      </div>
+
+      <div class="reveal reveal-delay-1 card-hover surface rounded-2xl p-8 cond-card" data-num="02">
+        <div class="card-head">
+          <div class="card-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><path d="M19 5L5 19M8 8a3 3 0 1 0-6 0 3 3 0 0 0 6 0ZM22 16a3 3 0 1 0-6 0 3 3 0 0 0 6 0Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-display text-xl text-white">Ставка</h3>
+        </div>
+        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Все модели получают 20–30%. Возможна фиксированная ставка на старте — условия обсуждаются&nbsp;индивидуально.</p>
+      </div>
+
+      <div class="reveal reveal-delay-2 card-hover surface rounded-2xl p-8 cond-card" data-num="03">
+        <div class="card-head">
+          <div class="card-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><path d="M20 12v9H4v-9M2 7h20v5H2V7ZM12 22V7M12 7c-2 0-4-1.5-4-3.5S9 2 10 2c1.5 0 2 2 2 5ZM12 7c2 0 4-1.5 4-3.5S13 2 12 2c-1.5 0-2 2-2 5Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-display text-xl text-white">Бонусы</h3>
+        </div>
+        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Премиальное бельё, игрушки, инвентарь для съёмок, стильная одежда и дополнительные денежные премии.</p>
+      </div>
+
+      <div class="reveal card-hover surface rounded-2xl p-8 cond-card" data-num="04">
+        <div class="card-head">
+          <div class="card-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><path d="M23 6l-9.5 9.5-5-5L1 18" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 6h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-display text-xl text-white">Трафик</h3>
+        </div>
+        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Агентство берёт на себя полное развитие страниц, бесперебойное подключение трафика и стабильный рост дохода. Источники трафика обсуждаются&nbsp;индивидуально.</p>
+      </div>
+
+      <div class="reveal reveal-delay-1 card-hover surface rounded-2xl p-8 cond-card" data-num="05">
+        <div class="card-head">
+          <div class="card-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3 class="font-display text-xl text-white">Прозрачность</h3>
+        </div>
+        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Модель имеет постоянный доступ ко всем своим страницам через сервис контроля Onlymonster. Никаких скрытых метрик.</p>
+      </div>
+
+      <div class="reveal reveal-delay-2 card-hover surface rounded-2xl p-8 cond-card" data-num="06">
+        <div class="card-head">
+          <div class="card-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><rect x="3" y="4" width="18" height="17" rx="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 9h18M8 2v4M16 2v4" stroke-linecap="round"/><path d="M8 14l2.5 2.5L16 11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-display text-xl text-white">Выплаты</h3>
+        </div>
+        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Доход выплачивается строго 2 раза в месяц, без задержек и скрытых комиссий.</p>
+      </div>
+
+      <div class="reveal card-hover surface rounded-2xl p-8 cond-card" data-num="07">
+        <div class="card-head">
+          <div class="card-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-display text-xl text-white">Дисциплина</h3>
+        </div>
+        <p class="text-[var(--text-muted)] text-sm leading-relaxed">От модели требуется ответственный подход: своевременная запись кастомов, соблюдение контент-плана без задержек и высокая вовлечённость в&nbsp;процесс.</p>
+      </div>
+
+      <div class="reveal reveal-delay-1 card-hover surface rounded-2xl p-8 cond-card" data-num="08">
+        <div class="card-head">
+          <div class="card-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-display text-xl text-white">Оперативность</h3>
+        </div>
+        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Надёжная поддержка со стороны команды и моментальная обратная связь. Менеджер всегда вовлечён в&nbsp;процесс.</p>
+      </div>
+
+      <div class="reveal reveal-delay-2 card-hover surface rounded-2xl p-8 sm:col-span-2 sm:w-[calc(50%-10px)] sm:mx-auto lg:col-span-1 lg:w-auto lg:mx-0 cond-card" data-num="09">
+        <div class="card-head">
+          <div class="card-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><rect x="4" y="11" width="16" height="10" rx="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 11V7a4 4 0 0 1 8 0v4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-display text-xl text-white">Конфиденциальность</h3>
+        </div>
+        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Геоблоки, продуманная легенда и трафик исключительно на западные страны — США и Канаду.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESULTS ================= -->
+<section id="results" class="relative bg-[var(--bg)] py-24 md:py-32">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+    <div class="flex flex-wrap items-end justify-between gap-8 mb-6">
+      <div class="reveal">
+        <span class="eyebrow">Кейсы</span>
+        <h2 class="font-display text-3xl md:text-[2.75rem] leading-[1.05] tracking-[-0.02em] text-white mt-4">Результаты и тоталы агентств</h2>
+      </div>
+      <p class="reveal reveal-delay-1 text-[var(--text-muted)] max-w-md leading-relaxed">Реальные выплаты из личных кабинетов трёх моделей, которых мы трудоустроили. Скриншоты — прямо из статистики заработка, имя и соцсети скрыты для&nbsp;конфиденциальности.</p>
+    </div>
+
+    <!-- ===== CASE 1 ===== -->
+    <div class="reveal card-hover surface rounded-2xl p-7 md:p-10 mt-6">
+      <div class="flex flex-wrap items-center gap-3 mb-8">
+        <span class="text-xs uppercase tracking-[0.1em] text-[var(--text-dim)] font-semibold">Кейс № 1</span>
+        <span class="tag-pill">Эксклюзивный контракт</span>
+        <span class="tag-pill">Рекордные выплаты</span>
+        <span class="tag-pill">Июль 2024 — январь 2026</span>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-10">
+        <!-- Headline numbers + breakdown -->
+        <div class="lg:col-span-5">
+          <div class="text-xs uppercase tracking-[0.1em] text-[var(--text-dim)] font-semibold mb-2">Чистый доход, обе&nbsp;страницы</div>
+          <div class="font-display text-4xl md:text-5xl text-white tracking-tight">$1 878 862</div>
+          <div class="text-[var(--text-muted)] text-sm mt-2">Gross $2 348 683 · последний месяц (янв. 2026) — <span class="text-white font-medium">$69 829</span></div>
+
+          <div class="mt-8 space-y-4">
+            <div>
+              <div class="flex items-center justify-between mb-2 text-sm">
+                <span class="text-[var(--text-muted)]">Сообщения (PPV/чат)</span>
+                <span class="text-white font-semibold">$1 271 748</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/[0.08] overflow-hidden"><div class="h-full rounded-full bg-[var(--accent)]" style="width:68%"></div></div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-2 text-sm">
+                <span class="text-[var(--text-muted)]">Подписки</span>
+                <span class="text-white font-semibold">$505 745</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/[0.08] overflow-hidden"><div class="h-full rounded-full bg-[var(--accent)]" style="width:27%"></div></div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-2 text-sm">
+                <span class="text-[var(--text-muted)]">Чаевые</span>
+                <span class="text-white font-semibold">$101 369</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/[0.08] overflow-hidden"><div class="h-full rounded-full bg-[var(--accent)]" style="width:5%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Two pages -->
+        <div class="lg:col-span-7 grid sm:grid-cols-2 gap-5">
+          <div class="surface-floating rounded-xl overflow-hidden">
+            <div class="p-5 pb-0 page-stat-row">
+              <span class="text-xs uppercase tracking-[0.08em] text-[var(--text-dim)] font-semibold">Страница A</span>
+              <span class="font-display text-lg text-white">$1 644 030</span>
+            </div>
+            <p class="px-5 text-[var(--text-dim)] text-xs mt-1">Чистыми · июл. 2024 — янв. 2026</p>
+            <div class="p-5">
+              <div class="case-shot rounded-lg overflow-hidden bg-[#f4f2ee] shadow-[0_20px_40px_-16px_rgba(0,0,0,0.55)]">
+                <img loading="lazy" decoding="async" src="images/cases/case1-a.jpg" alt="Статистика заработка, кейс 1, страница A" class="w-full h-auto block" data-lightbox tabindex="0" role="button" aria-label="Открыть скриншот статистики, кейс 1, страница A">
+              </div>
+            </div>
+          </div>
+          <div class="surface-floating rounded-xl overflow-hidden">
+            <div class="p-5 pb-0 page-stat-row">
+              <span class="text-xs uppercase tracking-[0.08em] text-[var(--text-dim)] font-semibold">Страница B</span>
+              <span class="font-display text-lg text-white">$234 832</span>
+            </div>
+            <p class="px-5 text-[var(--text-dim)] text-xs mt-1">Чистыми · июл. 2024 — янв. 2026</p>
+            <div class="p-5">
+              <div class="case-shot rounded-lg overflow-hidden bg-[#f4f2ee] shadow-[0_20px_40px_-16px_rgba(0,0,0,0.55)]">
+                <img loading="lazy" decoding="async" src="images/cases/case1-b.jpg" alt="Статистика заработка, кейс 1, страница B" class="w-full h-auto block" data-lightbox tabindex="0" role="button" aria-label="Открыть скриншот статистики, кейс 1, страница B">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CASE 2 ===== -->
+    <div class="reveal reveal-delay-1 card-hover surface rounded-2xl p-7 md:p-10 mt-6">
+      <div class="flex flex-wrap items-center gap-3 mb-8">
+        <span class="text-xs uppercase tracking-[0.1em] text-[var(--text-dim)] font-semibold">Кейс № 2</span>
+        <span class="tag-pill">Топ-агентство Украины</span>
+        <span class="tag-pill">Мощный трафик</span>
+        <span class="tag-pill">Июль 2023 — январь 2026</span>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-10">
+        <div class="lg:col-span-5">
+          <div class="text-xs uppercase tracking-[0.1em] text-[var(--text-dim)] font-semibold mb-2">Чистый доход, обе&nbsp;страницы</div>
+          <div class="font-display text-4xl md:text-5xl text-white tracking-tight">$1 357 115</div>
+          <div class="text-[var(--text-muted)] text-sm mt-2">Gross $1 696 409 · последний месяц (янв. 2026) — <span class="text-white font-medium">$48 782</span></div>
+
+          <div class="mt-8 space-y-4">
+            <div>
+              <div class="flex items-center justify-between mb-2 text-sm">
+                <span class="text-[var(--text-muted)]">Сообщения (PPV/чат)</span>
+                <span class="text-white font-semibold">$866 916</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/[0.08] overflow-hidden"><div class="h-full rounded-full bg-[var(--accent)]" style="width:64%"></div></div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-2 text-sm">
+                <span class="text-[var(--text-muted)]">Чаевые</span>
+                <span class="text-white font-semibold">$246 465</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/[0.08] overflow-hidden"><div class="h-full rounded-full bg-[var(--accent)]" style="width:18%"></div></div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-2 text-sm">
+                <span class="text-[var(--text-muted)]">Подписки</span>
+                <span class="text-white font-semibold">$221 259</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/[0.08] overflow-hidden"><div class="h-full rounded-full bg-[var(--accent)]" style="width:16%"></div></div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-2 text-sm">
+                <span class="text-[var(--text-muted)]">Посты</span>
+                <span class="text-white font-semibold">$22 475</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/[0.08] overflow-hidden"><div class="h-full rounded-full bg-[var(--accent)]" style="width:2%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 grid sm:grid-cols-2 gap-5">
+          <div class="surface-floating rounded-xl overflow-hidden">
+            <div class="p-5 pb-0 page-stat-row">
+              <span class="text-xs uppercase tracking-[0.08em] text-[var(--text-dim)] font-semibold">Страница A</span>
+              <span class="font-display text-lg text-white">$947 165</span>
+            </div>
+            <p class="px-5 text-[var(--text-dim)] text-xs mt-1">Чистыми · июл. 2023 — янв. 2026</p>
+            <div class="p-5">
+              <div class="case-shot rounded-lg overflow-hidden bg-[#f4f2ee] shadow-[0_20px_40px_-16px_rgba(0,0,0,0.55)]">
+                <img loading="lazy" decoding="async" src="images/cases/case2-a.jpg" alt="Статистика заработка, кейс 2, страница A" class="w-full h-auto block" data-lightbox tabindex="0" role="button" aria-label="Открыть скриншот статистики, кейс 2, страница A">
+              </div>
+            </div>
+          </div>
+          <div class="surface-floating rounded-xl overflow-hidden">
+            <div class="p-5 pb-0 page-stat-row">
+              <span class="text-xs uppercase tracking-[0.08em] text-[var(--text-dim)] font-semibold">Страница B</span>
+              <span class="font-display text-lg text-white">$409 950</span>
+            </div>
+            <p class="px-5 text-[var(--text-dim)] text-xs mt-1">Чистыми · ноя. 2023 — янв. 2026</p>
+            <div class="p-5">
+              <div class="case-shot rounded-lg overflow-hidden bg-[#f4f2ee] shadow-[0_20px_40px_-16px_rgba(0,0,0,0.55)]">
+                <img loading="lazy" decoding="async" src="images/cases/case2-b.jpg" alt="Статистика заработка, кейс 2, страница B" class="w-full h-auto block" data-lightbox tabindex="0" role="button" aria-label="Открыть скриншот статистики, кейс 2, страница B">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CASE 3 ===== -->
+    <div class="reveal reveal-delay-2 card-hover surface rounded-2xl p-7 md:p-10 mt-6">
+      <div class="flex flex-wrap items-center gap-3 mb-8">
+        <span class="text-xs uppercase tracking-[0.1em] text-[var(--text-dim)] font-semibold">Кейс № 3</span>
+        <span class="tag-pill">Европейский менеджмент</span>
+        <span class="tag-pill">Индивидуальные условия</span>
+        <span class="tag-pill">Декабрь 2023 — январь 2026</span>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-10">
+        <div class="lg:col-span-5">
+          <div class="text-xs uppercase tracking-[0.1em] text-[var(--text-dim)] font-semibold mb-2">Чистый доход, обе&nbsp;страницы</div>
+          <div class="font-display text-4xl md:text-5xl text-white tracking-tight">$465 039</div>
+          <div class="text-[var(--text-muted)] text-sm mt-2">Gross $581 288 · последний месяц (янв. 2026) — <span class="text-white font-medium">$13 902</span></div>
+
+          <div class="mt-8 space-y-4">
+            <div>
+              <div class="flex items-center justify-between mb-2 text-sm">
+                <span class="text-[var(--text-muted)]">Сообщения (PPV/чат)</span>
+                <span class="text-white font-semibold">$294 312</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/[0.08] overflow-hidden"><div class="h-full rounded-full bg-[var(--accent)]" style="width:63%"></div></div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-2 text-sm">
+                <span class="text-[var(--text-muted)]">Подписки</span>
+                <span class="text-white font-semibold">$106 454</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/[0.08] overflow-hidden"><div class="h-full rounded-full bg-[var(--accent)]" style="width:23%"></div></div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-2 text-sm">
+                <span class="text-[var(--text-muted)]">Чаевые</span>
+                <span class="text-white font-semibold">$63 232</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/[0.08] overflow-hidden"><div class="h-full rounded-full bg-[var(--accent)]" style="width:14%"></div></div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-2 text-sm">
+                <span class="text-[var(--text-muted)]">Посты</span>
+                <span class="text-white font-semibold">$1 041</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/[0.08] overflow-hidden"><div class="h-full rounded-full bg-[var(--accent)]" style="width:1%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 grid sm:grid-cols-2 gap-5">
+          <div class="surface-floating rounded-xl overflow-hidden">
+            <div class="p-5 pb-0 page-stat-row">
+              <span class="text-xs uppercase tracking-[0.08em] text-[var(--text-dim)] font-semibold">Страница A</span>
+              <span class="font-display text-lg text-white">$392 063</span>
+            </div>
+            <p class="px-5 text-[var(--text-dim)] text-xs mt-1">Чистыми · дек. 2023 — янв. 2026</p>
+            <div class="p-5">
+              <div class="case-shot rounded-lg overflow-hidden bg-[#f4f2ee] shadow-[0_20px_40px_-16px_rgba(0,0,0,0.55)]">
+                <img loading="lazy" decoding="async" src="images/cases/case3-a.jpg" alt="Статистика заработка, кейс 3, страница A" class="w-full h-auto block" data-lightbox tabindex="0" role="button" aria-label="Открыть скриншот статистики, кейс 3, страница A">
+              </div>
+            </div>
+          </div>
+          <div class="surface-floating rounded-xl overflow-hidden">
+            <div class="p-5 pb-0 page-stat-row">
+              <span class="text-xs uppercase tracking-[0.08em] text-[var(--text-dim)] font-semibold">Страница B</span>
+              <span class="font-display text-lg text-white">$72 977</span>
+            </div>
+            <p class="px-5 text-[var(--text-dim)] text-xs mt-1">Чистыми · фев. 2024 — янв. 2026</p>
+            <div class="p-5">
+              <div class="case-shot rounded-lg overflow-hidden bg-[#f4f2ee] shadow-[0_20px_40px_-16px_rgba(0,0,0,0.55)]">
+                <img loading="lazy" decoding="async" src="images/cases/case3-b.jpg" alt="Статистика заработка, кейс 3, страница B" class="w-full h-auto block" data-lightbox tabindex="0" role="button" aria-label="Открыть скриншот статистики, кейс 3, страница B">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal mt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 surface rounded-2xl p-8 md:p-10">
+      <p class="text-[var(--text-muted)] leading-relaxed max-w-xl">Это лишь 3 кейса — партнёрских команд в нашей базе намного больше. Мы гарантируем, что подберём вариант, в котором каждой модели будет комфортно, безопасно и выгодно.</p>
+      <a href="https://t.me/divareviewsss" target="_blank" rel="noopener" class="btn btn-ghost w-full sm:w-auto">
+        Смотреть кейсы в Telegram
+        <span class="btn-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA 1 ================= -->
+<section class="relative py-28 md:py-36 overflow-hidden">
+  <div class="absolute inset-0 img-tint cta-media">
+    <img loading="lazy" decoding="async" src="images/cta-banner.jpg" alt="" class="w-full h-full object-cover">
+    <div class="cta-scrim"></div>
+  </div>
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+    <div class="max-w-2xl reveal cta-copy">
+      <span class="eyebrow">Количество мест ограничено</span>
+      <h2 class="font-display text-3xl md:text-5xl leading-[1.08] tracking-[-0.02em] text-white mt-6">
+        Не упустите свой шанс присоединиться к топ-агентствам
+      </h2>
+      <p class="text-[var(--text-muted)] mt-6 text-lg leading-relaxed">Количество мест строго ограничено, а вакансии в эти агентства крайне востребованы. Оставьте заявку — и мы подберём для вас лучшие условия.</p>
+      <a href="#contact" data-open-apply class="btn btn-primary mt-10 w-full sm:w-auto">
+        Узнать все подробности
+        <span class="btn-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARKET OF ILLUSIONS ================= -->
+<section id="market" class="relative bg-[var(--bg)] py-24 md:py-32">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+    <div class="market-frame reveal">
+      <div class="market-media" aria-hidden="true">
+        <picture class="block w-full h-full">
+          <source type="image/webp"
+                  sizes="(max-width: 767px) 854px, (min-width: 1400px) 1320px, calc(100vw - 80px)"
+                  srcset="images/market-lit-1672.webp 1672w, images/market-lit-2400.webp 2400w, images/market-lit-3344.webp 3344w">
+          <img loading="lazy" decoding="async"
+               sizes="(max-width: 767px) 854px, (min-width: 1400px) 1320px, calc(100vw - 80px)"
+               srcset="images/market-lit-1672.jpg 1672w, images/market-lit-2400.jpg 2400w, images/market-lit-3344.jpg 3344w"
+               src="images/market-lit-1672.jpg" alt="" class="w-full h-full object-cover">
+        </picture>
+        <div class="market-scrim"></div>
+      </div>
+
+      <div class="market-inner">
+        <div class="max-w-xl">
+          <span class="eyebrow">Важное предостережение</span>
+          <h2 class="font-display text-3xl md:text-[3.2rem] leading-[1.05] tracking-[-0.02em] text-white mt-6">Рынок иллюзий</h2>
+          <p class="market-lead mt-6 text-lg leading-relaxed">
+            Будьте осторожны. Сегодня 95% тех, кто пишет вам в личные сообщения под видом&nbsp;«крупного OnlyFans-агентства», — это обычные посредники и недобросовестные скауты.
+          </p>
+        </div>
+
+        <div class="market-cols">
+          <div class="market-panel">
+            <h3 class="font-display text-2xl text-white mb-4">Как устроен реальный рынок?</h3>
+            <p class="text-[var(--text-muted)] leading-relaxed">
+              Топовые агентства предпочитают пользоваться услугами профессиональных рекрутинговых компаний — им невыгодно содержать собственный большой HR-отдел ради поиска одной модели раз в несколько месяцев.
+            </p>
+          </div>
+
+          <div class="market-panel">
+            <h3 class="font-display text-2xl text-white mb-4">Как обманывают моделей</h3>
+            <p class="text-[var(--text-muted)] leading-relaxed">
+              Схема «чёрных скаутов» проста: вам говорят «мы готовы с тобой работать, нужно подождать пару дней, пока выделим менеджера». В этот момент вашу анкету «сливают» в теневые Telegram-маркеты, а вашу судьбу выставляют на аукцион — вас отдадут тому, кто заплатит скауту больше.
+            </p>
+          </div>
+        </div>
+
+        <div class="market-panel market-panel-accent market-footer">
+          <p class="text-[var(--text-muted)] leading-relaxed">
+            Работая с <span class="text-white font-semibold">DIVA MODELS</span>, вы защищены от подобных рисков. Мы — официальное рекрутинговое агентство. Наша задача — подобрать проверенное агентство под ваши запросы и взять на себя полную ответственность за вашу&nbsp;безопасность.
+          </p>
+          <a href="blog-fake-agentstva.html" class="btn btn-ghost w-full sm:w-auto">
+            Читать статью в блоге
+            <span class="btn-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS / WORKFLOW ================= -->
+<section id="process" class="relative mesh-soft py-24 md:py-32">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+    <div class="flex flex-wrap items-end justify-between gap-8 mb-8">
+      <div class="reveal">
+        <span class="eyebrow">Процесс</span>
+        <h2 class="font-display text-3xl md:text-[2.75rem] leading-[1.05] tracking-[-0.02em] text-white mt-4">Как стать моделью с DIVA MODELS?</h2>
+      </div>
+      <p class="reveal reveal-delay-1 text-[var(--text-muted)] max-w-sm leading-relaxed">4 простых шага к результату — от знакомства до полноценной поддержки на протяжении всей карьеры.</p>
+    </div>
+
+    <div class="mt-12 divide-y divide-[var(--border-soft)] border-y border-[var(--border-soft)]">
+
+      <div class="reveal group py-9 md:py-11 grid md:grid-cols-12 gap-4 md:gap-8 items-center">
+        <div class="md:col-span-1">
+          <span class="w-12 h-12 rounded-full border border-[var(--border)] flex items-center justify-center font-display text-lg text-white">01</span>
+        </div>
+        <div class="md:col-span-4">
+          <h3 class="font-display text-2xl text-white">Собеседование</h3>
+        </div>
+        <div class="md:col-span-6 md:col-start-7">
+          <p class="text-[var(--text-muted)] leading-relaxed">Никакого стресса. Детально обсуждаем финансовые цели, допустимые форматы работы (табу) и сильные стороны, чтобы составить идеальное резюме.</p>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-1 group py-9 md:py-11 grid md:grid-cols-12 gap-4 md:gap-8 items-center">
+        <div class="md:col-span-1">
+          <span class="w-12 h-12 rounded-full border border-[var(--border)] flex items-center justify-center font-display text-lg text-white">02</span>
+        </div>
+        <div class="md:col-span-4">
+          <h3 class="font-display text-2xl text-white">Персональный&nbsp;подбор</h3>
+        </div>
+        <div class="md:col-span-6 md:col-start-7">
+          <p class="text-[var(--text-muted)] leading-relaxed">Берём поиск на себя. Проверяем партнёров и отбираем самые выгодные контракты из нашей закрытой базы.</p>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2 group py-9 md:py-11 grid md:grid-cols-12 gap-4 md:gap-8 items-center">
+        <div class="md:col-span-1">
+          <span class="w-12 h-12 rounded-full border border-[var(--border)] flex items-center justify-center font-display text-lg text-white">03</span>
+        </div>
+        <div class="md:col-span-4">
+          <h3 class="font-display text-2xl text-white">Выбор условий</h3>
+        </div>
+        <div class="md:col-span-6 md:col-start-7">
+          <p class="text-[var(--text-muted)] leading-relaxed">Мы не навязываем решения. Вы получаете несколько проверенных вариантов и сами выбираете команду с лучшим процентом и удобным графиком.</p>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-3 group py-9 md:py-11 grid md:grid-cols-12 gap-4 md:gap-8 items-center">
+        <div class="md:col-span-1">
+          <span class="w-12 h-12 rounded-full border border-[var(--border)] flex items-center justify-center font-display text-lg text-white">04</span>
+        </div>
+        <div class="md:col-span-4">
+          <h3 class="font-display text-2xl text-white">Запуск и поддержка</h3>
+        </div>
+        <div class="md:col-span-6 md:col-start-7">
+          <p class="text-[var(--text-muted)] leading-relaxed">Вы начинаете работу, а мы остаёмся личным саппортом — сопровождаем вас на протяжении всей карьеры.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="reveal mt-14 text-center">
+      <a href="#contact" data-open-apply class="btn btn-primary w-full sm:w-auto">
+        Пройти собеседование
+        <span class="btn-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA 2 ================= -->
+<section class="relative bg-[var(--bg)] py-20 md:py-28">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+    <div class="surface rounded-2xl px-8 py-14 md:px-16 md:py-20 text-center reveal relative overflow-hidden">
+      <div class="gradient-bars-bg" aria-hidden="true"></div>
+      <div class="cta2-scrim" aria-hidden="true"></div>
+      <div class="relative z-10">
+        <p class="font-display italic text-2xl md:text-4xl text-white max-w-2xl mx-auto leading-snug">
+          Заработок&nbsp;стартует от&nbsp;<span class="text-[var(--accent)] not-italic">$2 000</span>, и&nbsp;верхнего предела&nbsp;просто не&nbsp;существует.
+        </p>
+        <a href="#contact" data-open-apply class="btn btn-primary mt-10 w-full sm:w-auto">
+          Оставить заявку
+          <span class="btn-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="relative py-24 md:py-32 overflow-hidden bg-[var(--bg)]">
+  <div class="absolute inset-0 img-tint about-media">
+    <picture class="block w-full h-full">
+      <source type="image/webp" srcset="images/about.webp">
+      <img loading="lazy" decoding="async" src="images/about.jpg" alt="" class="w-full h-full object-cover">
+    </picture>
+    <div class="about-scrim" aria-hidden="true"></div>
+  </div>
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+    <div class="max-w-2xl about-copy">
+
+      <div class="reveal">
+        <span class="eyebrow">Кто мы?</span>
+        <h2 class="font-display text-3xl md:text-[2.6rem] leading-[1.1] tracking-[-0.02em] text-white mt-6">Ваш успех — наша приоритетная цель</h2>
+        <p class="text-[var(--text-muted)] leading-relaxed mt-6">
+          Агентство Diva Models основано в <span class="text-white font-semibold">2021 году</span>. За это время мы сформировали <span class="text-white font-semibold">сильную команду экспертов</span>, которая профессионально занимается поиском, подготовкой и запуском моделей в работу.
+        </p>
+        <p class="text-[var(--text-muted)] leading-relaxed mt-4">
+          Мы заключили <span class="text-white font-semibold">прямые контракты с лучшими командами Украины и Европы</span>, которые находятся в постоянном поиске новых талантов. Наша база — это не список агентств, а <span class="text-white font-semibold">отобранные лидеры индустрии</span>.
+        </p>
+        <div class="mt-10 stat-trio gap-6">
+          <div class="stat-trio-item">
+            <div class="font-display text-3xl text-white"><span class="counter" data-count-to="2021">0</span></div>
+            <div class="text-xs uppercase tracking-[0.08em] text-[var(--text-dim)] mt-2">Год основания</div>
+          </div>
+          <div class="stat-trio-item">
+            <div class="font-display text-3xl text-white"><span class="counter" data-count-to="1000">0</span>+</div>
+            <div class="text-xs uppercase tracking-[0.08em] text-[var(--text-dim)] mt-2">Успешных моделей</div>
+          </div>
+          <div class="stat-trio-item">
+            <div class="font-display text-3xl text-white"><span class="counter" data-count-to="700">0</span>+</div>
+            <div class="text-xs uppercase tracking-[0.08em] text-[var(--text-dim)] mt-2">Агентств партнёров</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= BLOG PREVIEW ================= -->
+<section id="blog" class="relative mesh-soft py-24 md:py-32">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+    <div class="flex flex-wrap items-end justify-between gap-8 mb-16">
+      <div class="reveal">
+        <span class="eyebrow">Полезное</span>
+        <h2 class="font-display text-3xl md:text-[2.75rem] leading-[1.05] tracking-[-0.02em] text-white mt-4">Блог для моделей и агентств</h2>
+      </div>
+      <a href="blog.html" class="reveal reveal-delay-1 btn btn-ghost w-full sm:w-auto">
+        Читать весь блог
+        <span class="btn-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+
+      <a href="blog-fake-agentstva.html" class="reveal card-hover surface rounded-2xl overflow-hidden flex flex-col">
+        <div class="img-treat img-overlay relative aspect-[4/3]">
+          <img loading="lazy" decoding="async" src="images/blog-3.jpg" alt="Фейк-агентства: кто на самом деле тебе пишет?" class="w-full h-full object-cover">
+        </div>
+        <div class="p-7 flex flex-col flex-1">
+          <div class="text-xs uppercase tracking-[0.1em] text-[var(--text-dim)] font-semibold mb-3">19 янв 2026</div>
+          <h3 class="font-display text-xl text-white mb-3 leading-snug">Фейк-агентства:&nbsp;кто на самом деле тебе пишет?</h3>
+          <p class="text-[var(--text-muted)] text-sm leading-relaxed mb-5">Рекрутинг здорового человека: почему лже-скауты губят карьеру&nbsp;модели.</p>
+          <span class="text-[var(--accent)] text-sm font-semibold mt-auto pt-1">Подробнее в блоге →</span>
+        </div>
+      </a>
+
+      <a href="blog-skolko-poluchaet-model.html" class="reveal reveal-delay-1 card-hover surface rounded-2xl overflow-hidden flex flex-col">
+        <div class="img-treat img-overlay relative aspect-[4/3]">
+          <img loading="lazy" decoding="async" src="images/blog-2.jpg" alt="Сколько получает модель?" class="w-full h-full object-cover">
+        </div>
+        <div class="p-7 flex flex-col flex-1">
+          <div class="text-xs uppercase tracking-[0.1em] text-[var(--text-dim)] font-semibold mb-3">27 дек 2025</div>
+          <h3 class="font-display text-xl text-white mb-3 leading-snug">Сколько&nbsp;получает&nbsp;модель?</h3>
+          <p class="text-[var(--text-muted)] text-sm leading-relaxed mb-5">Разбор деления прибыли, влияния трафика и условий для начинающих&nbsp;моделей.</p>
+          <span class="text-[var(--accent)] text-sm font-semibold mt-auto pt-1">Подробнее в блоге →</span>
+        </div>
+      </a>
+
+      <a href="blog-agentstvo-ili-solo.html" class="reveal reveal-delay-2 card-hover surface rounded-2xl overflow-hidden flex flex-col">
+        <div class="img-treat img-overlay relative aspect-[4/3]">
+          <img loading="lazy" decoding="async" src="images/blog-1.jpg" alt="Агентство или Соло?" class="w-full h-full object-cover">
+        </div>
+        <div class="p-7 flex flex-col flex-1">
+          <div class="text-xs uppercase tracking-[0.1em] text-[var(--text-dim)] font-semibold mb-3">20 дек 2025</div>
+          <h3 class="font-display text-xl text-white mb-3 leading-snug">Агентство&nbsp;или&nbsp;Соло?</h3>
+          <p class="text-[var(--text-muted)] text-sm leading-relaxed mb-5">Честный разбор плюсов и минусов. Где больше денег и меньше рисков.</p>
+          <span class="text-[var(--accent)] text-sm font-semibold mt-auto pt-1">Подробнее в блоге →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="relative bg-[var(--bg)] py-24 md:py-32 overflow-hidden">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+    <div class="flex flex-wrap items-end justify-between gap-8 reveal">
+      <div class="max-w-xl">
+        <span class="eyebrow">Отзывы</span>
+        <h2 class="font-display text-3xl md:text-[2.75rem] leading-[1.05] tracking-[-0.02em] text-white mt-6">Что говорят наши модели</h2>
+        <p class="text-[var(--text-muted)] leading-relaxed mt-6 max-w-md">
+          Настоящие слова моделей, которые уже работают с нами. Без постановочных фото — только истории и цифры, которые можно проверить в нашем&nbsp;Telegram-канале.
+        </p>
+      </div>
+      <div class="w-full sm:w-auto flex flex-col sm:flex-row sm:items-center gap-4">
+        <a href="https://t.me/divareviewsss" target="_blank" rel="noopener" class="btn btn-primary w-full sm:w-auto">
+          Смотреть отзывы в Telegram
+          <span class="btn-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <a href="#contact" data-open-apply class="btn btn-ghost w-full sm:w-auto">
+          Оставить заявку
+          <span class="btn-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scrolling reviews -->
+  <div class="reveal reveal-delay-1 mt-14 md:mt-16 testimonial-viewport">
+    <div class="testimonial-track gap-5 pl-6 md:pl-10">
+      <div class="review-card surface-floating rounded-2xl p-8 shrink-0 flex flex-col">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none" class="text-[var(--accent)] mb-5"><path d="M0 22V13.2C0 8.8 1.1 5.6 3.3 3.6C5.6 1.5 8.3 0.3 11.4 0L12.3 3.5C10.2 4.1 8.6 5 7.5 6.2C6.4 7.4 5.8 8.9 5.8 10.7H11.4V22H0ZM17.6 22V13.2C17.6 8.8 18.7 5.6 20.9 3.6C23.2 1.5 25.9 0.3 29 0L29.9 3.5C27.8 4.1 26.2 5 25.1 6.2C24 7.4 23.4 8.9 23.4 10.7H29V22H17.6Z" fill="currentColor"/></svg>
+        <p class="text-white/85 leading-relaxed">Долго боялась, что анкету «сольют» в закрытый чат, как случалось у знакомых. С DIVA всё наоборот: показали реальный оффер агентства, и я сама решала — соглашаться или нет.</p>
+        <div class="hr-soft mt-auto pt-5">
+          <div class="font-semibold text-white">Марина К.</div>
+          <div class="text-[var(--text-dim)] text-sm mt-0.5">Модель, стабильный уровень</div>
+          <div class="flex items-center gap-2 mt-4">
+            <span class="text-white font-display text-sm">5.0</span>
+            <span class="flex gap-0.5 text-[var(--accent)]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card surface-floating rounded-2xl p-8 shrink-0 flex flex-col">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none" class="text-[var(--accent)] mb-5"><path d="M0 22V13.2C0 8.8 1.1 5.6 3.3 3.6C5.6 1.5 8.3 0.3 11.4 0L12.3 3.5C10.2 4.1 8.6 5 7.5 6.2C6.4 7.4 5.8 8.9 5.8 10.7H11.4V22H0ZM17.6 22V13.2C17.6 8.8 18.7 5.6 20.9 3.6C23.2 1.5 25.9 0.3 29 0L29.9 3.5C27.8 4.1 26.2 5 25.1 6.2C24 7.4 23.4 8.9 23.4 10.7H29V22H17.6Z" fill="currentColor"/></svg>
+        <p class="text-white/85 leading-relaxed">Пришла совсем без опыта и без подписчиков. Мне честно объяснили, что придётся вложиться в раскрутку, — и агентство реально вложилось. Через полгода вышла на стабильный доход.</p>
+        <div class="hr-soft mt-auto pt-5">
+          <div class="font-semibold text-white">Аня П.</div>
+          <div class="text-[var(--text-dim)] text-sm mt-0.5">Начинала с нуля</div>
+          <div class="flex items-center gap-2 mt-4">
+            <span class="text-white font-display text-sm">5.0</span>
+            <span class="flex gap-0.5 text-[var(--accent)]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card surface-floating rounded-2xl p-8 shrink-0 flex flex-col">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none" class="text-[var(--accent)] mb-5"><path d="M0 22V13.2C0 8.8 1.1 5.6 3.3 3.6C5.6 1.5 8.3 0.3 11.4 0L12.3 3.5C10.2 4.1 8.6 5 7.5 6.2C6.4 7.4 5.8 8.9 5.8 10.7H11.4V22H0ZM17.6 22V13.2C17.6 8.8 18.7 5.6 20.9 3.6C23.2 1.5 25.9 0.3 29 0L29.9 3.5C27.8 4.1 26.2 5 25.1 6.2C24 7.4 23.4 8.9 23.4 10.7H29V22H17.6Z" fill="currentColor"/></svg>
+        <p class="text-white/85 leading-relaxed">Самое ценное — оперативность. Если у меня вопрос в два часа ночи, менеджер отвечает. Ни разу не было задержек по выплатам за всё время работы с&nbsp;агентством.</p>
+        <div class="hr-soft mt-auto pt-5">
+          <div class="font-semibold text-white">Соня Л.</div>
+          <div class="text-[var(--text-dim)] text-sm mt-0.5">Топ-модель, больше года с&nbsp;DIVA</div>
+          <div class="flex items-center gap-2 mt-4">
+            <span class="text-white font-display text-sm">5.0</span>
+            <span class="flex gap-0.5 text-[var(--accent)]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card surface-floating rounded-2xl p-8 shrink-0 flex flex-col">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none" class="text-[var(--accent)] mb-5"><path d="M0 22V13.2C0 8.8 1.1 5.6 3.3 3.6C5.6 1.5 8.3 0.3 11.4 0L12.3 3.5C10.2 4.1 8.6 5 7.5 6.2C6.4 7.4 5.8 8.9 5.8 10.7H11.4V22H0ZM17.6 22V13.2C17.6 8.8 18.7 5.6 20.9 3.6C23.2 1.5 25.9 0.3 29 0L29.9 3.5C27.8 4.1 26.2 5 25.1 6.2C24 7.4 23.4 8.9 23.4 10.7H29V22H17.6Z" fill="currentColor"/></svg>
+        <p class="text-white/85 leading-relaxed">Я сразу сказала, что не готова снимать определённый формат 18+. Мне не стали ничего навязывать — просто подобрали агентство, которому подходят именно мои условия.</p>
+        <div class="hr-soft mt-auto pt-5">
+          <div class="font-semibold text-white">Валерия Т.</div>
+          <div class="text-[var(--text-dim)] text-sm mt-0.5">Модель, работает без табу</div>
+          <div class="flex items-center gap-2 mt-4">
+            <span class="text-white font-display text-sm">5.0</span>
+            <span class="flex gap-0.5 text-[var(--accent)]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card surface-floating rounded-2xl p-8 shrink-0 flex flex-col">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none" class="text-[var(--accent)] mb-5"><path d="M0 22V13.2C0 8.8 1.1 5.6 3.3 3.6C5.6 1.5 8.3 0.3 11.4 0L12.3 3.5C10.2 4.1 8.6 5 7.5 6.2C6.4 7.4 5.8 8.9 5.8 10.7H11.4V22H0ZM17.6 22V13.2C17.6 8.8 18.7 5.6 20.9 3.6C23.2 1.5 25.9 0.3 29 0L29.9 3.5C27.8 4.1 26.2 5 25.1 6.2C24 7.4 23.4 8.9 23.4 10.7H29V22H17.6Z" fill="currentColor"/></svg>
+        <p class="text-white/85 leading-relaxed">Больше всего боялась, что меня узнают знакомые. Геоблоки и легенда сработали на 100% — за год работы ни одной проблемы с&nbsp;анонимностью.</p>
+        <div class="hr-soft mt-auto pt-5">
+          <div class="font-semibold text-white">Ксения Р.</div>
+          <div class="text-[var(--text-dim)] text-sm mt-0.5">Модель, растущий уровень</div>
+          <div class="flex items-center gap-2 mt-4">
+            <span class="text-white font-display text-sm">4.9</span>
+            <span class="flex gap-0.5 text-[var(--accent)]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card surface-floating rounded-2xl p-8 shrink-0 flex flex-col">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none" class="text-[var(--accent)] mb-5"><path d="M0 22V13.2C0 8.8 1.1 5.6 3.3 3.6C5.6 1.5 8.3 0.3 11.4 0L12.3 3.5C10.2 4.1 8.6 5 7.5 6.2C6.4 7.4 5.8 8.9 5.8 10.7H11.4V22H0ZM17.6 22V13.2C17.6 8.8 18.7 5.6 20.9 3.6C23.2 1.5 25.9 0.3 29 0L29.9 3.5C27.8 4.1 26.2 5 25.1 6.2C24 7.4 23.4 8.9 23.4 10.7H29V22H17.6Z" fill="currentColor"/></svg>
+        <p class="text-white/85 leading-relaxed">У меня уже был раскрученный&nbsp;инстаграм, и мне сразу предложили процент выше стандартного — никто не пытался занизить условия, потому что я&nbsp;«новенькая».</p>
+        <div class="hr-soft mt-auto pt-5">
+          <div class="font-semibold text-white">Диана М.</div>
+          <div class="text-[var(--text-dim)] text-sm mt-0.5">Пришла с готовой&nbsp;аудиторией</div>
+          <div class="flex items-center gap-2 mt-4">
+            <span class="text-white font-display text-sm">5.0</span>
+            <span class="flex gap-0.5 text-[var(--accent)]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card surface-floating rounded-2xl p-8 shrink-0 flex flex-col">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none" class="text-[var(--accent)] mb-5"><path d="M0 22V13.2C0 8.8 1.1 5.6 3.3 3.6C5.6 1.5 8.3 0.3 11.4 0L12.3 3.5C10.2 4.1 8.6 5 7.5 6.2C6.4 7.4 5.8 8.9 5.8 10.7H11.4V22H0ZM17.6 22V13.2C17.6 8.8 18.7 5.6 20.9 3.6C23.2 1.5 25.9 0.3 29 0L29.9 3.5C27.8 4.1 26.2 5 25.1 6.2C24 7.4 23.4 8.9 23.4 10.7H29V22H17.6Z" fill="currentColor"/></svg>
+        <p class="text-white/85 leading-relaxed">Написала в Diva Models после того, как меня чуть не развели фейковые скауты. Здесь совсем другой подход: сначала анкета и собеседование, а не «заплати и жди».</p>
+        <div class="hr-soft mt-auto pt-5">
+          <div class="font-semibold text-white">Кристина Б.</div>
+          <div class="text-[var(--text-dim)] text-sm mt-0.5">8 месяцев в агентстве</div>
+          <div class="flex items-center gap-2 mt-4">
+            <span class="text-white font-display text-sm">5.0</span>
+            <span class="flex gap-0.5 text-[var(--accent)]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card surface-floating rounded-2xl p-8 shrink-0 flex flex-col" aria-hidden="true">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none" class="text-[var(--accent)] mb-5"><path d="M0 22V13.2C0 8.8 1.1 5.6 3.3 3.6C5.6 1.5 8.3 0.3 11.4 0L12.3 3.5C10.2 4.1 8.6 5 7.5 6.2C6.4 7.4 5.8 8.9 5.8 10.7H11.4V22H0ZM17.6 22V13.2C17.6 8.8 18.7 5.6 20.9 3.6C23.2 1.5 25.9 0.3 29 0L29.9 3.5C27.8 4.1 26.2 5 25.1 6.2C24 7.4 23.4 8.9 23.4 10.7H29V22H17.6Z" fill="currentColor"/></svg>
+        <p class="text-white/85 leading-relaxed">Долго боялась, что анкету «сольют» в закрытый чат, как случалось у знакомых. С DIVA всё наоборот: показали реальный оффер агентства, и я сама решала — соглашаться или нет.</p>
+        <div class="hr-soft mt-auto pt-5">
+          <div class="font-semibold text-white">Марина К.</div>
+          <div class="text-[var(--text-dim)] text-sm mt-0.5">Модель, стабильный уровень</div>
+          <div class="flex items-center gap-2 mt-4">
+            <span class="text-white font-display text-sm">5.0</span>
+            <span class="flex gap-0.5 text-[var(--accent)]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card surface-floating rounded-2xl p-8 shrink-0 flex flex-col" aria-hidden="true">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none" class="text-[var(--accent)] mb-5"><path d="M0 22V13.2C0 8.8 1.1 5.6 3.3 3.6C5.6 1.5 8.3 0.3 11.4 0L12.3 3.5C10.2 4.1 8.6 5 7.5 6.2C6.4 7.4 5.8 8.9 5.8 10.7H11.4V22H0ZM17.6 22V13.2C17.6 8.8 18.7 5.6 20.9 3.6C23.2 1.5 25.9 0.3 29 0L29.9 3.5C27.8 4.1 26.2 5 25.1 6.2C24 7.4 23.4 8.9 23.4 10.7H29V22H17.6Z" fill="currentColor"/></svg>
+        <p class="text-white/85 leading-relaxed">Пришла совсем без опыта и без подписчиков. Мне честно объяснили, что придётся вложиться в раскрутку, — и агентство реально вложилось. Через полгода вышла на стабильный доход.</p>
+        <div class="hr-soft mt-auto pt-5">
+          <div class="font-semibold text-white">Аня П.</div>
+          <div class="text-[var(--text-dim)] text-sm mt-0.5">Начинала с нуля</div>
+          <div class="flex items-center gap-2 mt-4">
+            <span class="text-white font-display text-sm">5.0</span>
+            <span class="flex gap-0.5 text-[var(--accent)]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card surface-floating rounded-2xl p-8 shrink-0 flex flex-col" aria-hidden="true">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none" class="text-[var(--accent)] mb-5"><path d="M0 22V13.2C0 8.8 1.1 5.6 3.3 3.6C5.6 1.5 8.3 0.3 11.4 0L12.3 3.5C10.2 4.1 8.6 5 7.5 6.2C6.4 7.4 5.8 8.9 5.8 10.7H11.4V22H0ZM17.6 22V13.2C17.6 8.8 18.7 5.6 20.9 3.6C23.2 1.5 25.9 0.3 29 0L29.9 3.5C27.8 4.1 26.2 5 25.1 6.2C24 7.4 23.4 8.9 23.4 10.7H29V22H17.6Z" fill="currentColor"/></svg>
+        <p class="text-white/85 leading-relaxed">Самое ценное — оперативность. Если у меня вопрос в два часа ночи, менеджер отвечает. Ни разу не было задержек по выплатам за всё время работы с&nbsp;агентством.</p>
+        <div class="hr-soft mt-auto pt-5">
+          <div class="font-semibold text-white">Соня Л.</div>
+          <div class="text-[var(--text-dim)] text-sm mt-0.5">Топ-модель, больше года с&nbsp;DIVA</div>
+          <div class="flex items-center gap-2 mt-4">
+            <span class="text-white font-display text-sm">5.0</span>
+            <span class="flex gap-0.5 text-[var(--accent)]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card surface-floating rounded-2xl p-8 shrink-0 flex flex-col" aria-hidden="true">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none" class="text-[var(--accent)] mb-5"><path d="M0 22V13.2C0 8.8 1.1 5.6 3.3 3.6C5.6 1.5 8.3 0.3 11.4 0L12.3 3.5C10.2 4.1 8.6 5 7.5 6.2C6.4 7.4 5.8 8.9 5.8 10.7H11.4V22H0ZM17.6 22V13.2C17.6 8.8 18.7 5.6 20.9 3.6C23.2 1.5 25.9 0.3 29 0L29.9 3.5C27.8 4.1 26.2 5 25.1 6.2C24 7.4 23.4 8.9 23.4 10.7H29V22H17.6Z" fill="currentColor"/></svg>
+        <p class="text-white/85 leading-relaxed">Я сразу сказала, что не готова снимать определённый формат 18+. Мне не стали ничего навязывать — просто подобрали агентство, которому подходят именно мои условия.</p>
+        <div class="hr-soft mt-auto pt-5">
+          <div class="font-semibold text-white">Валерия Т.</div>
+          <div class="text-[var(--text-dim)] text-sm mt-0.5">Модель, работает без табу</div>
+          <div class="flex items-center gap-2 mt-4">
+            <span class="text-white font-display text-sm">5.0</span>
+            <span class="flex gap-0.5 text-[var(--accent)]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card surface-floating rounded-2xl p-8 shrink-0 flex flex-col" aria-hidden="true">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none" class="text-[var(--accent)] mb-5"><path d="M0 22V13.2C0 8.8 1.1 5.6 3.3 3.6C5.6 1.5 8.3 0.3 11.4 0L12.3 3.5C10.2 4.1 8.6 5 7.5 6.2C6.4 7.4 5.8 8.9 5.8 10.7H11.4V22H0ZM17.6 22V13.2C17.6 8.8 18.7 5.6 20.9 3.6C23.2 1.5 25.9 0.3 29 0L29.9 3.5C27.8 4.1 26.2 5 25.1 6.2C24 7.4 23.4 8.9 23.4 10.7H29V22H17.6Z" fill="currentColor"/></svg>
+        <p class="text-white/85 leading-relaxed">Больше всего боялась, что меня узнают знакомые. Геоблоки и легенда сработали на 100% — за год работы ни одной проблемы с&nbsp;анонимностью.</p>
+        <div class="hr-soft mt-auto pt-5">
+          <div class="font-semibold text-white">Ксения Р.</div>
+          <div class="text-[var(--text-dim)] text-sm mt-0.5">Модель, растущий уровень</div>
+          <div class="flex items-center gap-2 mt-4">
+            <span class="text-white font-display text-sm">4.9</span>
+            <span class="flex gap-0.5 text-[var(--accent)]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card surface-floating rounded-2xl p-8 shrink-0 flex flex-col" aria-hidden="true">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none" class="text-[var(--accent)] mb-5"><path d="M0 22V13.2C0 8.8 1.1 5.6 3.3 3.6C5.6 1.5 8.3 0.3 11.4 0L12.3 3.5C10.2 4.1 8.6 5 7.5 6.2C6.4 7.4 5.8 8.9 5.8 10.7H11.4V22H0ZM17.6 22V13.2C17.6 8.8 18.7 5.6 20.9 3.6C23.2 1.5 25.9 0.3 29 0L29.9 3.5C27.8 4.1 26.2 5 25.1 6.2C24 7.4 23.4 8.9 23.4 10.7H29V22H17.6Z" fill="currentColor"/></svg>
+        <p class="text-white/85 leading-relaxed">У меня уже был раскрученный&nbsp;инстаграм, и мне сразу предложили процент выше стандартного — никто не пытался занизить условия, потому что я&nbsp;«новенькая».</p>
+        <div class="hr-soft mt-auto pt-5">
+          <div class="font-semibold text-white">Диана М.</div>
+          <div class="text-[var(--text-dim)] text-sm mt-0.5">Пришла с готовой&nbsp;аудиторией</div>
+          <div class="flex items-center gap-2 mt-4">
+            <span class="text-white font-display text-sm">5.0</span>
+            <span class="flex gap-0.5 text-[var(--accent)]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card surface-floating rounded-2xl p-8 shrink-0 flex flex-col" aria-hidden="true">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none" class="text-[var(--accent)] mb-5"><path d="M0 22V13.2C0 8.8 1.1 5.6 3.3 3.6C5.6 1.5 8.3 0.3 11.4 0L12.3 3.5C10.2 4.1 8.6 5 7.5 6.2C6.4 7.4 5.8 8.9 5.8 10.7H11.4V22H0ZM17.6 22V13.2C17.6 8.8 18.7 5.6 20.9 3.6C23.2 1.5 25.9 0.3 29 0L29.9 3.5C27.8 4.1 26.2 5 25.1 6.2C24 7.4 23.4 8.9 23.4 10.7H29V22H17.6Z" fill="currentColor"/></svg>
+        <p class="text-white/85 leading-relaxed">Написала в Diva Models после того, как меня чуть не развели фейковые скауты. Здесь совсем другой подход: сначала анкета и собеседование, а не «заплати и жди».</p>
+        <div class="hr-soft mt-auto pt-5">
+          <div class="font-semibold text-white">Кристина Б.</div>
+          <div class="text-[var(--text-dim)] text-sm mt-0.5">8 месяцев в агентстве</div>
+          <div class="flex items-center gap-2 mt-4">
+            <span class="text-white font-display text-sm">5.0</span>
+            <span class="flex gap-0.5 text-[var(--accent)]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+    <div class="reveal reveal-delay-2 mt-14 surface rounded-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-x sm:divide-y lg:divide-y-0 divide-[var(--border-soft)] overflow-hidden">
+      <div class="trust-stat p-7 md:p-9 text-center">
+        <div class="font-display text-3xl md:text-4xl text-white whitespace-nowrap">25–30</div>
+        <div class="trust-stat-caption text-[var(--text-muted)] mt-2 leading-relaxed">моделей находят агентство<br>через нас каждый месяц</div>
+      </div>
+      <div class="trust-stat p-7 md:p-9 text-center">
+        <div class="font-display text-3xl md:text-4xl text-white whitespace-nowrap">2×/мес</div>
+        <div class="trust-stat-caption text-[var(--text-muted)] mt-2 leading-relaxed">стабильные выплаты без<br>задержек и скрытых комиссий</div>
+      </div>
+      <div class="trust-stat p-7 md:p-9 text-center">
+        <div class="font-display text-3xl md:text-4xl text-white whitespace-nowrap">20–30%</div>
+        <div class="trust-stat-caption text-[var(--text-muted)] mt-2 leading-relaxed">ставка для моделей,<br>индивидуально и выше</div>
+      </div>
+      <div class="trust-stat p-7 md:p-9 text-center">
+        <div class="font-display text-3xl md:text-4xl text-white whitespace-nowrap">100%</div>
+        <div class="trust-stat-caption text-[var(--text-muted)] mt-2 leading-relaxed">прозрачность условий<br>на каждом этапе</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA + CONTACT PREVIEW ================= -->
+<section id="contact" class="relative py-28 md:py-36 overflow-hidden">
+  <div class="absolute inset-0 mesh-hero"></div>
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10 text-left md:text-center">
+    <span class="eyebrow md:justify-center reveal">Стать моделью</span>
+    <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-[3.4rem] leading-[1.05] tracking-[-0.02em] text-white mt-6 max-w-2xl mx-auto">
+      Готовы выйти на доход от <span class="whitespace-nowrap">$2 000</span> из дома?
+    </h2>
+    <p class="reveal reveal-delay-2 text-[var(--text-muted)] mt-6 max-w-xl mx-auto text-lg leading-relaxed">
+      Оставьте заявку, и наш менеджер свяжется с вами в Telegram, чтобы обсудить условия и подобрать проверенное агентство под ваш запрос.
+    </p>
+    <div class="reveal reveal-delay-3 mt-10 flex flex-col sm:flex-row sm:items-center justify-center gap-4">
+      <a href="#contact" data-open-apply class="btn btn-primary w-full sm:w-auto">
+        Оставить заявку
+        <span class="btn-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a href="https://t.me/diva_modelss" target="_blank" rel="noopener" class="btn btn-ghost w-full sm:w-auto">
+        Написать менеджеру
+        <span class="btn-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="relative bg-[var(--bg)] border-t border-[var(--border-soft)] pt-16 pb-8">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+    <div class="grid md:grid-cols-12 gap-10 pb-12">
+      <div class="md:col-span-5">
+        <a href="#top" class="font-display text-2xl text-white">DIVA <span class="text-[var(--accent)]">MODELS</span></a>
+        <p class="text-[var(--text-muted)] text-sm leading-relaxed mt-5 max-w-xs">Рекрутинговая компания, которая помогает моделям найти надёжное и выгодное сотрудничество с OnlyFans-агентствами по всему миру.</p>
+      </div>
+      <div class="md:col-span-3 md:col-start-7">
+        <div class="text-xs uppercase tracking-[0.1em] text-[var(--text-dim)] font-semibold mb-5">Навигация</div>
+        <div class="flex flex-col gap-3 text-sm">
+          <a href="#about" class="nav-link w-fit">О нас</a>
+          <a href="#benefits" class="nav-link w-fit">Условия</a>
+          <a href="#blog" class="nav-link w-fit">Блог</a>
+          <a href="#contact" class="nav-link w-fit">Связаться</a>
+        </div>
+      </div>
+      <div class="md:col-span-3">
+        <div class="text-xs uppercase tracking-[0.1em] text-[var(--text-dim)] font-semibold mb-5">Связь</div>
+        <a href="https://t.me/divareviewsss" target="_blank" rel="noopener" class="nav-link w-fit block text-sm">Telegram-канал с кейсами</a>
+      </div>
+    </div>
+    <div class="hr-soft pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-[var(--text-dim)] text-xs">© 2026 DIVA MODELS. Все права защищены.</p>
+      <p class="text-[var(--text-dim)] text-xs">Только для лиц старше 18 лет.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const menuBtn = document.getElementById('menu-btn');
+  const menuClose = document.getElementById('menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.remove('hidden-menu'));
+  menuClose.addEventListener('click', () => mobileMenu.classList.add('hidden-menu'));
+  document.querySelectorAll('.mobile-link').forEach(el => el.addEventListener('click', () => mobileMenu.classList.add('hidden-menu')));
+
+  // Calculator modal
+  const calcModal = document.getElementById('calculator-modal');
+  const openCalcModal = () => {
+    calcModal.classList.add('open');
+    calcModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeCalcModal = () => {
+    calcModal.classList.remove('open');
+    calcModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+  document.querySelectorAll('[data-open-calculator]').forEach(el => el.addEventListener('click', openCalcModal));
+  calcModal.querySelectorAll('[data-modal-close]').forEach(el => el.addEventListener('click', closeCalcModal));
+  calcModal.querySelectorAll('[data-modal-dismiss]').forEach(el => el.addEventListener('click', (e) => { if(e.target === e.currentTarget) closeCalcModal(); }));
+  window.addEventListener('keydown', (e) => { if(e.key === 'Escape' && calcModal.classList.contains('open')) closeCalcModal(); });
+
+  // Image lightbox
+  const lightbox = document.getElementById('image-lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  let lastFocused = null;
+  const openLightbox = (img) => {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lastFocused = document.activeElement;
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeLightbox = () => {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocused) lastFocused.focus();
+  };
+  document.querySelectorAll('[data-lightbox]').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img));
+    img.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(img); }
+    });
+  });
+  lightbox.querySelectorAll('[data-modal-close]').forEach(el => el.addEventListener('click', closeLightbox));
+  lightbox.querySelectorAll('[data-modal-dismiss]').forEach(el => el.addEventListener('click', (e) => { if(e.target === e.currentTarget) closeLightbox(); }));
+  window.addEventListener('keydown', (e) => { if(e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox(); });
+
+  // Apply modal — form is fetched from apply-form.html and injected fresh
+  // on every open (so any tracking pixel added to that file fires every
+  // time a candidate views the form, not just once per page load).
+  const applyModal = document.getElementById('apply-modal');
+  const applyModalContent = document.getElementById('apply-modal-content');
+  let applyLastFocused = null;
+
+  function runInjectedScripts(container){
+    container.querySelectorAll('script').forEach(oldScript => {
+      const newScript = document.createElement('script');
+      [...oldScript.attributes].forEach(attr => newScript.setAttribute(attr.name, attr.value));
+      newScript.textContent = oldScript.textContent;
+      oldScript.replaceWith(newScript);
+    });
+  }
+
+  async function openApplyModal(){
+    applyLastFocused = document.activeElement;
+    if(calcModal.classList.contains('open')) closeCalcModal();
+    mobileMenu.classList.add('hidden-menu');
+    applyModal.classList.add('open');
+    applyModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    applyModalContent.innerHTML = '<div class="py-20 text-center text-[var(--text-dim)] text-sm">Загрузка формы…</div>';
+    try{
+      const res = await fetch('apply-form.html', { cache: 'no-store' });
+      if(!res.ok) throw new Error('fetch failed');
+      applyModalContent.innerHTML = await res.text();
+      runInjectedScripts(applyModalContent);
+    }catch(err){
+      applyModalContent.innerHTML = '<div class="py-20 text-center"><p class="text-[var(--text-dim)] text-sm">Не удалось загрузить форму. Напишите нам напрямую:</p><a href="https://t.me/diva_modelss" target="_blank" rel="noopener" class="btn btn-primary mt-6 inline-flex">Написать в Telegram</a></div>';
+    }
+  }
+
+  function closeApplyModal(){
+    applyModal.classList.remove('open');
+    applyModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if(applyLastFocused) applyLastFocused.focus();
+  }
+
+  document.querySelectorAll('[data-open-apply]').forEach(el => {
+    el.addEventListener('click', (e) => { e.preventDefault(); openApplyModal(); });
+  });
+  // Delegated so it also catches the close button inside injected content
+  applyModal.addEventListener('click', (e) => { if(e.target.closest('[data-modal-close]')) closeApplyModal(); });
+  applyModal.querySelectorAll('[data-modal-dismiss]').forEach(el => el.addEventListener('click', (e) => { if(e.target === e.currentTarget) closeApplyModal(); }));
+  window.addEventListener('keydown', (e) => { if(e.key === 'Escape' && applyModal.classList.contains('open')) closeApplyModal(); });
+
+  // Testimonial marquee: press and hold to freeze, resume the moment you
+  // let go (hover does the same on desktop, handled in CSS).
+  const testimonialViewport = document.querySelector('.testimonial-viewport');
+  const testimonialTrack = document.querySelector('.testimonial-track');
+  if(testimonialViewport && testimonialTrack){
+    const hold = () => testimonialTrack.classList.add('paused');
+    // Only resume once every finger is off — and always resume on cancel,
+    // otherwise a touch the browser takes over would freeze the strip.
+    const release = (e) => {
+      if(!e || !e.touches || e.touches.length === 0) testimonialTrack.classList.remove('paused');
+    };
+    testimonialViewport.addEventListener('touchstart', hold, { passive: true });
+    testimonialViewport.addEventListener('touchend', release, { passive: true });
+    testimonialViewport.addEventListener('touchcancel', release, { passive: true });
+    // Safety net: a backgrounded tab can swallow touchend entirely.
+    window.addEventListener('blur', () => release());
+    document.addEventListener('visibilitychange', () => { if(document.hidden) release(); });
+  }
+
+  // Animated gradient bars background
+  document.querySelectorAll('.gradient-bars-bg').forEach(container => {
+    const isNarrow = window.innerWidth < 640;
+    const numBars = isNarrow ? 13 : 15;
+    for (let i = 0; i < numBars; i++) {
+      const position = i / (numBars - 1);
+      let height, amp, width;
+      if (isNarrow) {
+        // Rolling skyline of uneven light shafts: no dead centre, every beam
+        // tall enough to read behind the copy, and each one with its own
+        // width and travel distance so it never lines up into a barcode.
+        const wave = 0.5 - 0.5 * Math.cos(position * Math.PI * 3.4 + 0.6);
+        const edge = Math.pow(Math.abs(position - 0.5) * 2, 1.6);
+        height = 0.58 + 0.3 * wave + 0.12 * edge + Math.random() * 0.06;
+        amp = 0.52 + Math.random() * 0.3;
+        width = 0.55 + Math.random() * 1.15;
+      } else {
+        const distanceFromCenter = Math.abs(position - 0.5);
+        const heightPct = Math.pow(distanceFromCenter * 2, 1.2);
+        height = (30 + (100 - 30) * heightPct) / 100;
+      }
+      const bar = document.createElement('div');
+      bar.className = 'bar';
+      bar.style.setProperty('--h', height.toFixed(3));
+      bar.style.setProperty('--delay', (i * (isNarrow ? 0.14 : 0.1)).toFixed(2) + 's');
+      bar.style.setProperty('--dur', (2 + Math.random() * 0.8).toFixed(2) + 's');
+      if (amp) bar.style.setProperty('--amp', amp.toFixed(3));
+      if (width) bar.style.setProperty('--w', width.toFixed(3));
+      container.appendChild(bar);
+    }
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  // Count-up number animation
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const counterEls = document.querySelectorAll('.counter');
+  const easeOutQuart = t => 1 - Math.pow(1 - t, 4);
+
+  function animateCounter(el){
+    const target = parseInt(el.dataset.countTo, 10);
+    if(prefersReducedMotion || !target){
+      el.textContent = target;
+      return;
+    }
+    const duration = 1600;
+    const start = performance.now();
+    function tick(now){
+      const progress = Math.min((now - start) / duration, 1);
+      const value = Math.round(target * easeOutQuart(progress));
+      el.textContent = value;
+      if(progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const counterIo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        animateCounter(entry.target);
+        counterIo.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  counterEls.forEach(el => counterIo.observe(el));
+
+  // ===== Calculator =====
+  const followers = document.getElementById('followers');
+  const price = document.getElementById('price');
+  const fVal = document.getElementById('f-val');
+  const pVal = document.getElementById('p-val');
+  const resDisp = document.getElementById('calc-result');
+  const expToggle = document.getElementById('exp-toggle');
+  const tabooToggle = document.getElementById('taboo-toggle');
+
+  const expMap = { 0: 0.20, 1: 0.25, 2: 0.30, 3: 0.35 };
+  const tabooMap = { 0: 0.1, 1: 1.0, 2: 1.1 };
+
+  let expValue = 0;
+  let tabooValue = 1;
+
+  function setFill(input){
+    const pct = ((input.value - input.min) / (input.max - input.min)) * 100;
+    input.style.setProperty('--fill', pct + '%');
+  }
+
+  function calculate(){
+    const f = parseInt(followers.value, 10);
+    const p = parseFloat(price.value);
+
+    fVal.textContent = f.toLocaleString('ru-RU');
+    pVal.textContent = '$' + p;
+
+    const totalBase = f * p;
+    const min = Math.round(totalBase * expMap[expValue] * tabooMap[tabooValue]);
+    const max = Math.round(min * 1.10);
+
+    resDisp.textContent = `$${min.toLocaleString('ru-RU')} – $${max.toLocaleString('ru-RU')}`;
+    setFill(followers);
+    setFill(price);
+  }
+
+  followers.addEventListener('input', calculate);
+  price.addEventListener('input', calculate);
+
+  expToggle.querySelectorAll('.step-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      expToggle.querySelectorAll('.step-toggle').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      expValue = parseInt(btn.dataset.value, 10);
+      calculate();
+    });
+  });
+
+  tabooToggle.querySelectorAll('.step-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabooToggle.querySelectorAll('.step-toggle').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      tabooValue = parseInt(btn.dataset.value, 10);
+      calculate();
+    });
+  });
+
+  calculate();
+</script>
+
+</body>
+</html>
