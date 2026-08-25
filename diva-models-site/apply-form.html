@@ -1,0 +1,341 @@
+<!--
+  ============================================================================
+  DIVA MODELS — Apply form (candidate application)
+  ============================================================================
+  This file is intentionally separate from index.html. It is fetched and
+  injected into the #apply-modal shell on the main page every time that
+  modal is opened (see the "Apply modal" script block in index.html).
+
+  WHY THIS FILE IS SEPARATE:
+  So that ad-platform tracking pixels (Meta/Facebook, TikTok, Google Ads,
+  etc.) can be added in exactly ONE place without touching index.html or
+  hunting through the rest of the site.
+
+  WHERE TO ADD YOUR PIXEL CODE:
+    1. "Form view" pixel (fires every time this form is shown) →
+       see the PIXEL: FORM VIEW block near the top of the <script> below.
+    2. "Lead / conversion" pixel (fires on successful submit) →
+       see the PIXEL: LEAD SUBMIT block inside the submit handler below.
+
+  This file has no real backend yet — submitting shows a success state
+  locally. Wire up an actual endpoint inside the PIXEL: LEAD SUBMIT /
+  form submit handler when one exists (fetch() POST to your CRM/webhook).
+  ============================================================================
+-->
+
+<style>
+  .af-field{ position: relative; }
+  .af-field input[type="text"],
+  .af-field input[type="tel"]{
+    width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border);
+    color: #fff; font-family: 'Manrope', sans-serif; font-size: 15px;
+    padding: 10px 2px; outline: none;
+    transition: border-color 0.3s ease;
+  }
+  .af-field input::placeholder{ color: var(--text-dim); }
+  .af-field input:focus{ border-bottom-color: var(--accent); }
+  .af-field label{
+    display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px;
+  }
+
+  .af-pill{
+    flex: 1; text-align: center; padding: 11px 8px; border-radius: 10px;
+    font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.03em; text-transform: uppercase;
+    color: var(--text-dim); border: 1px solid var(--border);
+    background: transparent; cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .af-pill:hover:not(.active){ color: #fff; border-color: rgba(255,255,255,0.3); }
+  .af-pill.active{ color: #fff; background: var(--accent-dim); border-color: rgba(211,30,61,0.6); }
+  .af-pill:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* Needs to outrank `.af-field label`, which otherwise forces display:block
+     here and drops the flex layout — gap included — on the floor. */
+  .af-field label.af-check,
+  .af-check{
+    display: flex; align-items: center; gap: 12px; cursor: pointer;
+    margin-bottom: 0;
+  }
+  .af-check input{
+    appearance: none; -webkit-appearance: none; flex-shrink: 0;
+    width: 18px; height: 18px; border-radius: 5px;
+    border: 1px solid var(--border); background: transparent; cursor: pointer;
+    position: relative; transition: all 0.2s ease;
+  }
+  .af-check input:checked{ background: var(--accent); border-color: var(--accent); }
+  .af-check input:checked::after{
+    content: ''; position: absolute; left: 5px; top: 1px;
+    width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .af-check span{ font-size: 13px; line-height: 1.5; color: var(--text-muted); }
+
+  .af-error{ color: var(--accent-bright); font-size: 12px; margin-top: 6px; display: none; }
+  .af-field.af-invalid input{ border-bottom-color: var(--accent-bright); }
+  .af-field.af-invalid .af-error{ display: block; }
+  .af-group.af-invalid .af-pill{ border-color: rgba(255,61,94,0.5); }
+  .af-group.af-invalid .af-error{ display: block; }
+
+  /* Layout — one column on phones, two from 768px so the form clears the fold */
+  #af-form{ margin-top: 36px; }
+  .af-grid{ display: flex; flex-direction: column; gap: 28px; }
+  .af-footer{ margin-top: 28px; }
+  .af-consents{ display: flex; flex-direction: column; gap: 16px; }
+  .af-submit{ width: 100%; margin-top: 28px; }
+
+  @media (min-width: 768px){
+    #af-form{ margin-top: 22px; }
+    .af-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto;
+      grid-auto-flow: column;
+      column-gap: 44px; row-gap: 16px;
+      align-items: start;
+    }
+    .af-footer{
+      margin-top: 20px;
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 40px;
+    }
+    .af-consents{ flex: 1; gap: 12px; }
+    .af-submit{ width: auto; margin-top: 0; flex-shrink: 0; }
+  }
+
+
+  /* Ловушка для спам-ботов: человек этого поля не видит и не может заполнить. */
+  .af-hp{ position: absolute; left: -9999px; top: 0; width: 1px; height: 1px; overflow: hidden; }
+
+  #af-success{ display: none; }
+  #af-success.active{ display: block; }
+  #af-form-view.hidden{ display: none; }
+</style>
+
+<!-- ============================================================
+     PIXEL: FORM VIEW — fires every time this form is displayed.
+     Add your ad-platform "ViewContent" / form-open pixel snippet here.
+     ============================================================ -->
+<!-- <script>/* e.g. fbq('track', 'ViewContent'); */</script> -->
+
+<div id="af-form-view">
+  <div class="text-center" id="af-header">
+    <h3 class="font-display text-3xl text-white">Стать <span class="text-[var(--accent)]">моделью</span></h3>
+    <p class="text-[var(--text-muted)] text-sm leading-relaxed mt-3 max-w-sm md:max-w-xl mx-auto">
+      Оставьте свои данные, и наш менеджер свяжется с вами в Telegram для обсуждения условий.
+    </p>
+  </div>
+
+  <form id="af-form" novalidate>
+      <div class="af-hp" aria-hidden="true">
+        <label>Не заполняйте это поле
+          <input type="text" name="website" id="af-website" tabindex="-1" autocomplete="off">
+        </label>
+      </div>
+
+    <!-- Column 1 takes the three text fields, column 2 the three choice
+         groups, so the whole form clears the fold on a laptop. Stacks back
+         to one column below 768px, in source order. -->
+    <div class="af-grid">
+    <div class="af-field">
+      <label for="af-name">Ваше имя</label>
+      <input type="text" id="af-name" name="name" autocomplete="name" placeholder="Имя" required>
+      <div class="af-error">Пожалуйста, укажите ваше имя.</div>
+    </div>
+
+    <div class="af-field">
+      <label for="af-phone">Номер телефона</label>
+      <input type="tel" id="af-phone" name="phone" autocomplete="tel" placeholder="+380" required>
+      <div class="af-error">Пожалуйста, укажите номер телефона.</div>
+    </div>
+
+    <div class="af-field">
+      <label for="af-telegram">Ваш Telegram (@username)</label>
+      <input type="text" id="af-telegram" name="telegram" autocomplete="off" placeholder="@username" required>
+      <div class="af-error">Пожалуйста, укажите ваш Telegram.</div>
+    </div>
+
+    <div class="af-group" data-group="age">
+      <label class="block text-xs uppercase tracking-[0.08em] font-semibold text-[var(--text-dim)] mb-3">Сколько вам лет?</label>
+      <div class="flex gap-2">
+        <button type="button" class="af-pill" data-value="18-22">18-22</button>
+        <button type="button" class="af-pill" data-value="23-26">23-26</button>
+        <button type="button" class="af-pill" data-value="27-30+">27-30+</button>
+      </div>
+      <div class="af-error">Пожалуйста, выберите возраст.</div>
+    </div>
+
+    <div class="af-group" data-group="experience">
+      <label class="block text-xs uppercase tracking-[0.08em] font-semibold text-[var(--text-dim)] mb-3">Ваш опыт на OnlyFans</label>
+      <div class="flex gap-2">
+        <button type="button" class="af-pill" data-value="none">Нет</button>
+        <button type="button" class="af-pill" data-value="model">Модель</button>
+        <button type="button" class="af-pill" data-value="operator">Оператор</button>
+      </div>
+      <div class="af-error">Пожалуйста, выберите вариант.</div>
+    </div>
+
+    <div class="af-group" data-group="taboo18">
+      <label class="block text-xs uppercase tracking-[0.08em] font-semibold text-[var(--text-dim)] mb-3">Готовы ли вы снимать контент 18+?</label>
+      <div class="flex gap-2">
+        <button type="button" class="af-pill" data-value="yes">Да</button>
+        <button type="button" class="af-pill" data-value="no">Нет</button>
+      </div>
+      <div class="af-error">Пожалуйста, выберите вариант.</div>
+    </div>
+    </div>
+
+    <div class="af-footer">
+      <div class="af-field af-consents">
+        <label class="af-check">
+          <input type="checkbox" id="af-consent-age" required>
+          <span>Я подтверждаю, что мне 18+</span>
+        </label>
+        <label class="af-check">
+          <input type="checkbox" id="af-consent-data" required>
+          <span>Я согласна, что Diva Models может обработать данные для разбора и связи со мной.</span>
+        </label>
+        <div class="af-error">Необходимо подтвердить оба пункта.</div>
+      </div>
+
+      <button type="submit" class="btn btn-primary af-submit justify-center">
+        Отправить заявку
+      </button>
+    </div>
+
+      <div class="af-error" id="af-send-error" style="display:none; margin-top:14px;">
+        Не удалось отправить заявку. Попробуйте ещё раз или
+        <a href="https://t.me/diva_modelss" target="_blank" rel="noopener" style="text-decoration:underline;">напишите нам в Telegram</a> — ответим сразу.
+      </div>
+
+  </form>
+</div>
+
+<div id="af-success" class="text-center py-6">
+  <div class="w-14 h-14 rounded-full bg-[var(--accent-dim)] border border-[rgba(211,30,61,0.5)] flex items-center justify-center mx-auto">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+  </div>
+  <h3 class="font-display text-2xl text-white mt-6">Заявка отправлена!</h3>
+  <p class="text-[var(--text-muted)] text-sm leading-relaxed mt-3 max-w-sm mx-auto">
+    Мы связываемся с кандидатами в Telegram. Пожалуйста, периодически проверяйте личные сообщения или напишите нашему менеджеру первыми, чтобы получить ответ как можно быстрее!
+  </p>
+  <div class="mt-8 flex flex-col sm:flex-row sm:justify-center gap-3">
+    <a href="https://t.me/diva_modelss" target="_blank" rel="noopener" class="btn btn-primary w-full sm:w-auto justify-center">Написать менеджеру</a>
+    <button type="button" data-modal-close class="btn btn-ghost w-full sm:w-auto justify-center">Закрыть</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('apply-modal-content');
+  if(!root) return;
+
+  // Pill toggle groups
+  root.querySelectorAll('.af-group').forEach(function(group){
+    group.querySelectorAll('.af-pill').forEach(function(pill){
+      pill.addEventListener('click', function(){
+        group.querySelectorAll('.af-pill').forEach(function(p){ p.classList.remove('active'); });
+        pill.classList.add('active');
+        group.classList.remove('af-invalid');
+      });
+    });
+  });
+
+  function pickedValue(name){
+    var pill = root.querySelector('[data-group="' + name + '"] .af-pill.active');
+    return pill ? pill.dataset.value : '';
+  }
+
+  var form = document.getElementById('af-form');
+  var successView = document.getElementById('af-success');
+  var formView = document.getElementById('af-form-view');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var valid = true;
+
+    ['af-name', 'af-phone', 'af-telegram'].forEach(function(id){
+      var input = document.getElementById(id);
+      var field = input.closest('.af-field');
+      if(!input.value.trim()){ field.classList.add('af-invalid'); valid = false; }
+      else{ field.classList.remove('af-invalid'); }
+    });
+
+    // Pill groups start with nothing selected — each one must be answered
+    root.querySelectorAll('.af-group').forEach(function(group){
+      if(!group.querySelector('.af-pill.active')){ group.classList.add('af-invalid'); valid = false; }
+      else{ group.classList.remove('af-invalid'); }
+    });
+
+    ['af-consent-age', 'af-consent-data'].forEach(function(id){
+      var input = document.getElementById(id);
+      if(!input.checked) valid = false;
+    });
+    var consentField = document.getElementById('af-consent-age').closest('.af-field');
+    if(!document.getElementById('af-consent-age').checked || !document.getElementById('af-consent-data').checked){
+      consentField.classList.add('af-invalid');
+      valid = false;
+    } else {
+      consentField.classList.remove('af-invalid');
+    }
+
+    if(!valid){ return; }
+
+    var data = {
+      name: document.getElementById('af-name').value.trim(),
+      phone: document.getElementById('af-phone').value.trim(),
+      telegram: document.getElementById('af-telegram').value.trim(),
+      age: pickedValue('age'),
+      experience: pickedValue('experience'),
+      taboo18: pickedValue('taboo18')
+    };
+
+    // ============================================================
+    // Куда уходят заявки: воркер Cloudflare — он хранит токен бота
+    // и сам пишет в группу. Токен здесь не нужен и быть не должен.
+    // Адрес продублирован в apply.html и apply-form.html — если он
+    // поменяется, правьте в обоих файлах.
+    // ============================================================
+    var LEAD_ENDPOINT = 'https://diva-leads.diva-models-001.workers.dev';
+
+    data.website = document.getElementById('af-website').value;   // honeypot
+    data.source = 'Попап на сайте';
+    data.page = window.location.href;
+    data.submittedAt = new Date().toLocaleString('ru-RU');
+
+    var sendError = document.getElementById('af-send-error');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var originalLabel = submitBtn.textContent;
+    sendError.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Отправляем…';
+
+    fetch(LEAD_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(function(res){ return res.ok ? res.json() : Promise.reject(res.status); })
+    .then(function(result){
+      if(!result || !result.ok) return Promise.reject('rejected');
+
+      // ============================================================
+      // PIXEL: LEAD SUBMIT — fires once, right after a successful
+      // application. Add your ad-platform conversion pixel here, e.g.:
+      //   fbq('track', 'Lead');
+      //   ttq.track('SubmitForm');
+      // ============================================================
+
+      formView.classList.add('hidden');
+      successView.classList.add('active');
+    })
+    .catch(function(){
+      // Ничего не притворяемся: заявка не ушла. Показываем это и даём прямой
+      // контакт, чтобы лид не потерялся, и разблокируем кнопку для повтора.
+      sendError.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+    });
+  });
+})();
+</script>
