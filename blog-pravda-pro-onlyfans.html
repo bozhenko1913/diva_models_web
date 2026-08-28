@@ -40,12 +40,12 @@
 <meta name="theme-color" content="#050505">
 
 <!-- ===== Ссылка на себя и превью для соцсетей ===== -->
-<link rel="canonical" href="https://models-diva.com/vsya-pravda-pro-onlyfsns-dlya-modeley.html">
+<link rel="canonical" href="https://models-diva.com/blog-pravda-pro-onlyfans.html">
 <meta property="og:site_name" content="DIVA MODELS">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:locale:alternate" content="uk_UA">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://models-diva.com/vsya-pravda-pro-onlyfsns-dlya-modeley.html">
+<meta property="og:url" content="https://models-diva.com/blog-pravda-pro-onlyfans.html">
 <meta property="og:title" content="Вся правда про OnlyFans: без иллюзий и обещаний — DIVA MODELS">
 <meta property="og:description" content="Откровенный разговор о работе на OnlyFans: харизма, сливы, реальные доходы, чатеры и то, о чём молчат другие агентства.">
 <meta property="og:image" content="https://models-diva.com/images/blog-6.jpg">
@@ -56,6 +56,12 @@
 <meta name="twitter:title" content="Вся правда про OnlyFans: без иллюзий и обещаний — DIVA MODELS">
 <meta name="twitter:description" content="Откровенный разговор о работе на OnlyFans: харизма, сливы, реальные доходы, чатеры и то, о чём молчат другие агентства.">
 <meta name="twitter:image" content="https://models-diva.com/images/blog-6.jpg">
+
+<style>
+  #apply-modal:not(.open) {
+    display: none !important;
+  }
+</style>
 </head>
 <body class="antialiased">
 
@@ -122,8 +128,8 @@
   </div>
 </div>
 
-<!-- Apply modal (content injected from apply-form.html) -->
-<div id="apply-modal" class="fixed inset-0 z-[90]" aria-hidden="true">
+<!-- Apply modal -->
+<div id="apply-modal" style="display: none;" class="fixed inset-0 z-[90]" aria-hidden="true">
   <div class="absolute inset-0 bg-black/85 backdrop-blur-sm" data-modal-dismiss></div>
   <div class="relative min-h-full flex items-center justify-center p-4 md:p-6" data-modal-dismiss>
     <div class="modal-panel surface-floating rounded-2xl p-7 md:p-8 w-full max-w-lg md:max-w-3xl max-h-[92vh] overflow-y-auto shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] relative">
@@ -131,7 +137,45 @@
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 1L15 15M15 1L1 15" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
       </button>
       <div id="apply-modal-content">
-        <div class="py-20 text-center text-[var(--text-dim)] text-sm lang" data-ru="Загрузка формы…" data-ua="Завантаження форми…">Загрузка формы…</div>
+        <div class="text-center mb-6">
+          <span class="eyebrow justify-center lang" data-ru="Анкета модели" data-ua="Анкета моделі">Анкета модели</span>
+          <h3 class="font-display text-2xl md:text-3xl text-white mt-2 lang" data-ru="Заявка на сотрудничество" data-ua="Заявка на співпрацю">Заявка на сотрудничество</h3>
+        </div>
+
+        <form id="apply-form" class="space-y-4" action="https://formspree.io/f/xqaeozyv" method="POST">
+          <div>
+            <label class="block text-xs uppercase tracking-[0.1em] text-[var(--text-muted)] font-semibold mb-2 lang" data-ru="Ваше имя" data-ua="Ваше ім'я">Ваше имя</label>
+            <input type="text" name="name" required placeholder="Имя" class="w-full bg-[#121214] border border-[var(--border)] rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[var(--accent)]">
+          </div>
+
+          <div>
+            <label class="block text-xs uppercase tracking-[0.1em] text-[var(--text-muted)] font-semibold mb-2 lang" data-ru="Telegram / WhatsApp" data-ua="Telegram / WhatsApp">Telegram / WhatsApp</label>
+            <input type="text" name="contact" required placeholder="@username или номер" class="w-full bg-[#121214] border border-[var(--border)] rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[var(--accent)]">
+          </div>
+
+          <div>
+            <label class="block text-xs uppercase tracking-[0.1em] text-[var(--text-muted)] font-semibold mb-2 lang" data-ru="Возраст" data-ua="Вік">Возраст</label>
+            <input type="number" name="age" min="18" max="60" required placeholder="18+" class="w-full bg-[#121214] border border-[var(--border)] rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[var(--accent)]">
+          </div>
+
+          <div>
+            <label class="block text-xs uppercase tracking-[0.1em] text-[var(--text-muted)] font-semibold mb-2 lang" data-ru="Ссылка на Instagram / Соцсети" data-ua="Посилання на Instagram / Соцмережі">Ссылка на Instagram / Соцсети</label>
+            <input type="text" name="socials" placeholder="https://instagram.com/..." class="w-full bg-[#121214] border border-[var(--border)] rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[var(--accent)]">
+          </div>
+
+          <div>
+            <label class="block text-xs uppercase tracking-[0.1em] text-[var(--text-muted)] font-semibold mb-2 lang" data-ru="Опыт работы" data-ua="Досвід роботи">Опыт работы</label>
+            <select name="experience" class="w-full bg-[#121214] border border-[var(--border)] rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[var(--accent)]">
+              <option value="no" class="lang" data-ru="Без опыта" data-ua="Без досвіду">Без опыта</option>
+              <option value="solo" class="lang" data-ru="Работал(а) соло" data-ua="Працював(ла) соло">Работал(а) соло</option>
+              <option value="agency" class="lang" data-ru="Есть опыт с агентством" data-ua="Є досвід з агентством">Есть опыт с агентством</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-full justify-center mt-6 lang" data-ru="Отправить анкету" data-ua="Надіслати анкету">
+            Отправить анкету
+          </button>
+        </form>
       </div>
     </div>
   </div>
@@ -206,7 +250,6 @@
    data-ua="Так, історії про заробіток без показу обличчя існують. Але це поодинокі випадки. Швидше виняток, ніж орієнтир. Для тих, хто боїться, що їх фото потраплять в інтернет, одразу наступне.">
    Так, історії про заробіток без показу обличчя існують. Але це поодинокі випадки. Швидше виняток, ніж орієнтир. Для тих, хто боїться, що їх фото потраплять в інтернет, одразу наступне.
 </p>
-
 
 <h2 class="lang" data-ru="Кому OnlyFans точно не подойдёт" data-ua="Кому OnlyFans точно не підійде">Кому OnlyFans точно не підійде</h2>
 
@@ -404,8 +447,8 @@
   <div class="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
     <div class="max-w-2xl cta-copy">
       <span class="eyebrow lang" data-ru="Готовы начать?" data-ua="Готові почати?">Готові почати?</span>
-      <h2 class="font-display text-3xl md:text-5xl leading-[1.08] tracking-[-0.02em] text-white mt-6 lang" data-ru="Подберём агентство, в котором вам будет безопасно и выгодно" data-ua="Підберемо агентство, в якому вам буде безпечно і вигідно">
-        Підберемо агентство, в якому вам буде безпечно і вигідно
+      <h2 class="font-display text-3xl md:text-5xl leading-[1.08] tracking-[-0.02em] text-white mt-6 lang" data-ru="Подберём агентство, в котором вам будет безопасно и выгодно" data-ua="Підберемо агентство, в якому вам буде безпечно і вигодно">
+        Підберемо агентство, в якому вам буде безпечно і вигодно
       </h2>
       <p class="text-[var(--text-muted)] mt-6 text-lg leading-relaxed lang" data-ru="Оставьте заявку — мы разберём вашу ситуацию, ответим на вопросы и предложим несколько проверенных вариантов на выбор. Без обязательств." data-ua="Залиште заявку — ми розберемо вашу ситуацію, відповімо на питання і запропонуємо кілька перевірених варіантів на вибір. Без зобов'язань.">
         Залиште заявку — ми розберемо вашу ситуацію, відповімо на питання і запропонуємо кілька перевірених варіантів на вибір. Без зобов'язань.
@@ -453,7 +496,57 @@
   </div>
 </footer>
 
-<script src="assets/blog.js"></script>
+<script>
+  // Mobile menu
+  const menuBtn = document.getElementById('menu-btn');
+  const menuClose = document.getElementById('menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (menuBtn && menuClose && mobileMenu) {
+    menuBtn.addEventListener('click', () => mobileMenu.classList.remove('hidden-menu'));
+    menuClose.addEventListener('click', () => mobileMenu.classList.add('hidden-menu'));
+    document.querySelectorAll('.mobile-link').forEach(el => el.addEventListener('click', () => mobileMenu.classList.add('hidden-menu')));
+  }
+
+  // Apply modal
+  const applyModal = document.getElementById('apply-modal');
+  let applyLastFocused = null;
+
+  function openApplyModal() {
+    applyLastFocused = document.activeElement;
+    if (mobileMenu) mobileMenu.classList.add('hidden-menu');
+    
+    applyModal.style.display = 'block';
+    applyModal.classList.add('open');
+    applyModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    if (typeof window.setLanguage === 'function') {
+      var saved = 'ru';
+      try { saved = localStorage.getItem('diva_lang') || 'ru'; } catch(e){}
+      window.setLanguage(saved);
+    }
+  }
+
+  function closeApplyModal() {
+    applyModal.classList.remove('open');
+    applyModal.style.display = 'none';
+    applyModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (applyLastFocused) applyLastFocused.focus();
+  }
+
+  document.querySelectorAll('[data-open-apply]').forEach(el => {
+    el.addEventListener('click', (e) => { e.preventDefault(); openApplyModal(); });
+  });
+
+  if (applyModal) {
+    applyModal.addEventListener('click', (e) => { if (e.target.closest('[data-modal-close]')) closeApplyModal(); });
+    applyModal.querySelectorAll('[data-modal-dismiss]').forEach(el => el.addEventListener('click', (e) => { if (e.target === e.currentTarget) closeApplyModal(); }));
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && applyModal.classList.contains('open')) closeApplyModal(); });
+  }
+</script>
+
+<script src="assets/site.js"></script>
 <script src="assets/lang.js"></script>
 </body>
 </html>
