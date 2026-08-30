@@ -113,37 +113,22 @@
 </style>
 
 <!-- ============================================================
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1544600723622373');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1544600723622373&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+     PIXEL: FORM VIEW — fires every time this form is displayed.
+     Add your ad-platform "ViewContent" / form-open pixel snippet here.
      ============================================================ -->
 <!-- <script>/* e.g. fbq('track', 'ViewContent'); */</script> -->
 
 <div id="af-form-view">
   <div class="text-center" id="af-header">
-    <h3 class="font-display text-3xl text-white lang" data-ru="Стать <span class=&quot;text-[var(--accent)]&quot;>моделью</span>" data-ua="Стати <span class=&quot;text-[var(--accent)]&quot;>моделлю</span>">Стать <span class="text-[var(--accent)]">моделью</span></h3>
-    <p class="text-[var(--text-muted)] text-sm leading-relaxed mt-3 max-w-sm md:max-w-xl mx-auto lang" data-ru="Оставьте свои данные, и наш менеджер свяжется с вами в Telegram для обсуждения условий." data-ua="Залиште свої дані, і наш менеджер зв'яжеться з вами в Telegram для обговорення умов.">
+    <h3 class="font-display text-3xl text-white">Стать <span class="text-[var(--accent)]">моделью</span></h3>
+    <p class="text-[var(--text-muted)] text-sm leading-relaxed mt-3 max-w-sm md:max-w-xl mx-auto">
       Оставьте свои данные, и наш менеджер свяжется с вами в Telegram для обсуждения условий.
     </p>
   </div>
 
   <form id="af-form" novalidate>
       <div class="af-hp" aria-hidden="true">
-        <label class="lang" data-ru="Не заполняйте это поле <input type=&quot;text&quot; name=&quot;website&quot; id=&quot;af-website&quot; tabindex=&quot;-1&quot; autocomplete=&quot;off&quot;>" data-ua="Не заповнюйте це поле <input type=&quot;text&quot; name=&quot;website&quot; id=&quot;af-website&quot; tabindex=&quot;-1&quot; autocomplete=&quot;off&quot;>">Не заполняйте это поле
+        <label>Не заполняйте это поле
           <input type="text" name="website" id="af-website" tabindex="-1" autocomplete="off">
         </label>
       </div>
@@ -153,50 +138,50 @@ src="https://www.facebook.com/tr?id=1544600723622373&ev=PageView&noscript=1"
          to one column below 768px, in source order. -->
     <div class="af-grid">
     <div class="af-field">
-      <label class="lang" for="af-name" data-ru="Ваше имя" data-ua="Ваше ім'я">Ваше имя</label>
-      <input type="text" id="af-name" name="name" autocomplete="name" placeholder="Имя" data-ph-ru="Имя" data-ph-ua="Ім'я" required>
-      <div class="af-error lang" data-ru="Пожалуйста, укажите ваше имя." data-ua="Будь ласка, вкажіть ваше ім'я.">Пожалуйста, укажите ваше имя.</div>
+      <label for="af-name">Ваше имя</label>
+      <input type="text" id="af-name" name="name" autocomplete="name" placeholder="Имя" required>
+      <div class="af-error">Пожалуйста, укажите ваше имя.</div>
     </div>
 
     <div class="af-field">
-      <label class="lang" for="af-phone" data-ru="Номер телефона" data-ua="Номер телефону">Номер телефона</label>
-      <input type="tel" id="af-phone" name="phone" autocomplete="tel" placeholder="+380" data-ph-ru="+380" data-ph-ua="+380" required>
-      <div class="af-error lang" data-ru="Пожалуйста, укажите номер телефона." data-ua="Будь ласка, вкажіть номер телефону.">Пожалуйста, укажите номер телефона.</div>
+      <label for="af-phone">Номер телефона</label>
+      <input type="tel" id="af-phone" name="phone" autocomplete="tel" placeholder="+380" required>
+      <div class="af-error">Пожалуйста, укажите номер телефона.</div>
     </div>
 
     <div class="af-field">
-      <label class="lang" for="af-telegram" data-ru="Ваш Telegram (@username)" data-ua="Ваш Telegram (@username)">Ваш Telegram (@username)</label>
-      <input type="text" id="af-telegram" name="telegram" autocomplete="off" placeholder="@username" data-ph-ru="@username" data-ph-ua="@username" required>
-      <div class="af-error lang" data-ru="Пожалуйста, укажите ваш Telegram." data-ua="Будь ласка, вкажіть ваш Telegram.">Пожалуйста, укажите ваш Telegram.</div>
+      <label for="af-telegram">Ваш Telegram (@username)</label>
+      <input type="text" id="af-telegram" name="telegram" autocomplete="off" placeholder="@username" required>
+      <div class="af-error">Пожалуйста, укажите ваш Telegram.</div>
     </div>
 
     <div class="af-group" data-group="age">
-      <label class="block text-xs uppercase tracking-[0.08em] font-semibold text-[var(--text-dim)] mb-3 lang" data-ru="Сколько вам лет?" data-ua="Скільки вам років?">Сколько вам лет?</label>
+      <label class="block text-xs uppercase tracking-[0.08em] font-semibold text-[var(--text-dim)] mb-3">Сколько вам лет?</label>
       <div class="flex gap-2">
         <button type="button" class="af-pill" data-value="18-22">18-22</button>
         <button type="button" class="af-pill" data-value="23-26">23-26</button>
         <button type="button" class="af-pill" data-value="27-30+">27-30+</button>
       </div>
-      <div class="af-error lang" data-ru="Пожалуйста, выберите возраст." data-ua="Будь ласка, оберіть вік.">Пожалуйста, выберите возраст.</div>
+      <div class="af-error">Пожалуйста, выберите возраст.</div>
     </div>
 
     <div class="af-group" data-group="experience">
-      <label class="block text-xs uppercase tracking-[0.08em] font-semibold text-[var(--text-dim)] mb-3 lang" data-ru="Ваш опыт на OnlyFans" data-ua="Ваш досвід на OnlyFans">Ваш опыт на OnlyFans</label>
+      <label class="block text-xs uppercase tracking-[0.08em] font-semibold text-[var(--text-dim)] mb-3">Ваш опыт на OnlyFans</label>
       <div class="flex gap-2">
-        <button type="button" class="af-pill lang" data-value="none" data-ru="Нет" data-ua="Ні">Нет</button>
-        <button type="button" class="af-pill lang" data-value="model" data-ru="Модель" data-ua="Модель">Модель</button>
-        <button type="button" class="af-pill lang" data-value="operator" data-ru="Оператор" data-ua="Оператор">Оператор</button>
+        <button type="button" class="af-pill" data-value="none">Нет</button>
+        <button type="button" class="af-pill" data-value="model">Модель</button>
+        <button type="button" class="af-pill" data-value="operator">Оператор</button>
       </div>
-      <div class="af-error lang" data-ru="Пожалуйста, выберите вариант." data-ua="Будь ласка, оберіть варіант.">Пожалуйста, выберите вариант.</div>
+      <div class="af-error">Пожалуйста, выберите вариант.</div>
     </div>
 
     <div class="af-group" data-group="taboo18">
-      <label class="block text-xs uppercase tracking-[0.08em] font-semibold text-[var(--text-dim)] mb-3 lang" data-ru="Готовы ли вы снимать контент 18+?" data-ua="Чи готові ви знімати контент 18+?">Готовы ли вы снимать контент 18+?</label>
+      <label class="block text-xs uppercase tracking-[0.08em] font-semibold text-[var(--text-dim)] mb-3">Готовы ли вы снимать контент 18+?</label>
       <div class="flex gap-2">
-        <button type="button" class="af-pill lang" data-value="yes" data-ru="Да" data-ua="Так">Да</button>
-        <button type="button" class="af-pill lang" data-value="no" data-ru="Нет" data-ua="Ні">Нет</button>
+        <button type="button" class="af-pill" data-value="yes">Да</button>
+        <button type="button" class="af-pill" data-value="no">Нет</button>
       </div>
-      <div class="af-error lang" data-ru="Пожалуйста, выберите вариант." data-ua="Будь ласка, оберіть варіант.">Пожалуйста, выберите вариант.</div>
+      <div class="af-error">Пожалуйста, выберите вариант.</div>
     </div>
     </div>
 
@@ -204,21 +189,21 @@ src="https://www.facebook.com/tr?id=1544600723622373&ev=PageView&noscript=1"
       <div class="af-field af-consents">
         <label class="af-check">
           <input type="checkbox" id="af-consent-age" required>
-          <span class="lang" data-ru="Я подтверждаю, что мне 18+" data-ua="Я підтверджую, що мені 18+">Я подтверждаю, что мне 18+</span>
+          <span>Я подтверждаю, что мне 18+</span>
         </label>
         <label class="af-check">
           <input type="checkbox" id="af-consent-data" required>
-          <span class="lang" data-ru="Я согласна, что Diva Models может обработать данные для разбора и связи со мной." data-ua="Я згодна, що Diva Models може обробити дані для розбору та зв'язку зі мною.">Я согласна, что Diva Models может обработать данные для разбора и связи со мной.</span>
+          <span>Я согласна, что Diva Models может обработать данные для разбора и связи со мной.</span>
         </label>
-        <div class="af-error lang" data-ru="Необходимо подтвердить оба пункта." data-ua="Необхідно підтвердити обидва пункти.">Необходимо подтвердить оба пункта.</div>
+        <div class="af-error">Необходимо подтвердить оба пункта.</div>
       </div>
 
-      <button type="submit" class="btn btn-primary af-submit justify-center lang" data-ru="Отправить заявку" data-ua="Надіслати заявку">
+      <button type="submit" class="btn btn-primary af-submit justify-center">
         Отправить заявку
       </button>
     </div>
 
-      <div class="af-error lang" id="af-send-error" style="display:none; margin-top:14px;" data-ru="Не удалось отправить заявку. Попробуйте ещё раз или <a href=&quot;https://t.me/diva_modelss&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; style=&quot;text-decoration:underline;&quot;>напишите нам в Telegram</a> — ответим сразу." data-ua="Не вдалося надіслати заявку. Спробуйте ще раз або <a href=&quot;https://t.me/diva_modelss&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; style=&quot;text-decoration:underline;&quot;>напишіть нам у Telegram</a> — відповімо одразу.">
+      <div class="af-error" id="af-send-error" style="display:none; margin-top:14px;">
         Не удалось отправить заявку. Попробуйте ещё раз или
         <a href="https://t.me/diva_modelss" target="_blank" rel="noopener" style="text-decoration:underline;">напишите нам в Telegram</a> — ответим сразу.
       </div>
@@ -230,13 +215,13 @@ src="https://www.facebook.com/tr?id=1544600723622373&ev=PageView&noscript=1"
   <div class="w-14 h-14 rounded-full bg-[var(--accent-dim)] border border-[rgba(211,30,61,0.5)] flex items-center justify-center mx-auto">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
   </div>
-  <h3 class="font-display text-2xl text-white mt-6 lang" data-ru="Заявка отправлена!" data-ua="Заявку надіслано!">Заявка отправлена!</h3>
-  <p class="text-[var(--text-muted)] text-sm leading-relaxed mt-3 max-w-sm mx-auto lang" data-ru="Мы связываемся с кандидатами в Telegram. Пожалуйста, периодически проверяйте личные сообщения или напишите нашему менеджеру первыми, чтобы получить ответ как можно быстрее!" data-ua="Ми зв'язуємось із кандидатками в Telegram. Будь ласка, періодично перевіряйте приватні повідомлення або напишіть нашому менеджеру першими, щоб отримати відповідь якнайшвидше!">
+  <h3 class="font-display text-2xl text-white mt-6">Заявка отправлена!</h3>
+  <p class="text-[var(--text-muted)] text-sm leading-relaxed mt-3 max-w-sm mx-auto">
     Мы связываемся с кандидатами в Telegram. Пожалуйста, периодически проверяйте личные сообщения или напишите нашему менеджеру первыми, чтобы получить ответ как можно быстрее!
   </p>
   <div class="mt-8 flex flex-col sm:flex-row sm:justify-center gap-3">
-    <a href="https://t.me/diva_modelss" target="_blank" rel="noopener" class="btn btn-primary w-full sm:w-auto justify-center lang" data-ru="Написать менеджеру" data-ua="Написати менеджеру">Написать менеджеру</a>
-    <button type="button" data-modal-close class="btn btn-ghost w-full sm:w-auto justify-center lang" data-ru="Закрыть" data-ua="Закрити">Закрыть</button>
+    <a href="https://t.me/diva_modelss" target="_blank" rel="noopener" class="btn btn-primary w-full sm:w-auto justify-center">Написать менеджеру</a>
+    <button type="button" data-modal-close class="btn btn-ghost w-full sm:w-auto justify-center">Закрыть</button>
   </div>
 </div>
 
@@ -306,8 +291,10 @@ src="https://www.facebook.com/tr?id=1544600723622373&ev=PageView&noscript=1"
     };
 
     // ============================================================
-    // Адрес, куда уходят заявки. Продублирован в apply.html и
-    // apply-form.html — если поменяется, правьте в обоих файлах.
+    // Куда уходят заявки: воркер Cloudflare — он хранит токен бота
+    // и сам пишет в группу. Токен здесь не нужен и быть не должен.
+    // Адрес продублирован в apply.html и apply-form.html — если он
+    // поменяется, правьте в обоих файлах.
     // ============================================================
     var LEAD_ENDPOINT = 'https://diva-leads.diva-models-001.workers.dev';
 
