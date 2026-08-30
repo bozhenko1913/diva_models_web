@@ -3,26 +3,6 @@
   ############################################################################
   DIVA MODELS — ЛЕНДИНГ ДЛЯ РЕКЛАМЫ (заявка кандидата)
   ############################################################################
-
-  Отдельная самостоятельная страница. Ничего не подключает с сайта — весь
-  CSS, вёрстка и скрипт лежат прямо здесь, в этом файле. Можно править и
-  заливать отдельно, не трогая index.html.
-
-  КУДА ВСТАВЛЯТЬ ПИКСЕЛЬ — 4 места, все помечены "PIXEL SLOT":
-
-    1. BASE CODE   — в <head>, сразу ниже. Базовый код пикселя.
-    2. PAGE VIEW   — сразу после <body>. Просмотр страницы.
-    3. FORM VIEW   — перед формой. Показ формы (ViewContent).
-    4. LEAD SUBMIT — в самом низу файла, внутри скрипта. Конверсия (Lead).
-
-  Ищите по слову PIXEL — все четыре блока подписаны крупными рамками.
-
-  ФОРМА идентична той, что открывается в попапе на главной странице
-  (apply-form.html). Если меняете поля здесь — поменяйте и там.
-
-  ЗАЯВКА пока никуда не отправляется: показывается экран "Заявка отправлена".
-  Реальный endpoint подключается в блоке TODO рядом с PIXEL SLOT 4.
-  ############################################################################
 -->
 <html lang="ru">
 <head>
@@ -34,16 +14,22 @@
 
 <!-- ############################################################################
      PIXEL SLOT 1 of 4 — BASE CODE (head)
-     ############################################################################
-     Paste the ad platform's base/init snippet here. This is the one that goes
-     "on every page" in the platform's instructions.
-
-       Meta:   <script>!function(f,b,e,v,n,t,s){...}; fbq('init','ID');</script>
-       TikTok: <script>!function(w,d,t){...}; ttq.load('ID');</script>
-       Google: <script async src="https://www.googletagmanager.com/gtag/js?id=ID"></script>
-
-     ######################################################################### -->
-
+     ############################################################################ -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1544600723622373');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1544600723622373&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -139,8 +125,6 @@
   .af-pill.active{ color: #fff; background: var(--accent-dim); border-color: rgba(211,30,61,0.6); }
   .af-pill:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
 
-  /* Needs to outrank `.af-field label`, which otherwise forces display:block
-     here and drops the flex layout — gap included — on the floor. */
   .af-field label.af-check,
   .af-check{
     display: flex; align-items: center; gap: 12px; cursor: pointer;
@@ -166,7 +150,6 @@
   .af-group.af-invalid .af-pill{ border-color: rgba(255,61,94,0.5); }
   .af-group.af-invalid .af-error{ display: block; }
 
-  /* Layout — one column on phones, two from 768px so the form clears the fold */
   #af-form{ margin-top: 36px; }
   .af-grid{ display: flex; flex-direction: column; gap: 28px; }
   .af-footer{ margin-top: 28px; }
@@ -191,8 +174,6 @@
     .af-submit{ width: auto; margin-top: 0; flex-shrink: 0; }
   }
 
-
-  /* Ловушка для спам-ботов: человек этого поля не видит и не может заполнить. */
   .af-hp{ position: absolute; left: -9999px; top: 0; width: 1px; height: 1px; overflow: hidden; }
 
   #af-success{ display: none; }
@@ -230,14 +211,10 @@
 
 <!-- ############################################################################
      PIXEL SLOT 2 of 4 — PAGE VIEW
-     ############################################################################
-     Fires once, as soon as somebody lands on this page from an ad.
-
-       Meta:   <script>fbq('track','PageView');</script>
-       TikTok: <script>ttq.page();</script>
-
-     ######################################################################### -->
-
+     ############################################################################ -->
+<script>
+  fbq('track', 'PageView');
+</script>
 
 <div class="page-bg">
 
@@ -251,21 +228,13 @@
   <main class="max-w-[880px] mx-auto px-5 sm:px-8 py-10 md:py-14">
     <div class="surface-floating rounded-2xl p-6 sm:p-8 md:p-10 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.8)]">
 
-      <!-- ####################################################################
+      <!-- ############################################################################
            PIXEL SLOT 3 of 4 — FORM VIEW
-           ####################################################################
-           Fires when the form is shown. On this page that is on load.
+           ############################################################################ -->
+      <script>
+        fbq('track', 'ViewContent');
+      </script>
 
-             Meta:   <script>fbq('track','ViewContent');</script>
-             TikTok: <script>ttq.track('ViewContent');</script>
-
-           ################################################################# -->
-
-
-      <!-- ======================================================================
-           THE FORM — copied verbatim from apply-form.html (the popup version),
-           so both stay visually and functionally identical.
-           ====================================================================== -->
       <div id="af-root">
 <div id="af-form-view">
   <div class="text-center" id="af-header">
@@ -282,9 +251,6 @@
         </label>
       </div>
 
-    <!-- Column 1 takes the three text fields, column 2 the three choice
-         groups, so the whole form clears the fold on a laptop. Stacks back
-         to one column below 768px, in source order. -->
     <div class="af-grid">
     <div class="af-field">
       <label class="lang" for="af-name" data-ru="Ваше имя" data-ua="Ваше ім'я">Ваше имя</label>
@@ -366,7 +332,7 @@
   </div>
   <h3 class="font-display text-2xl text-white mt-6 lang" data-ru="Заявка отправлена!" data-ua="Заявку надіслано!">Заявка отправлена!</h3>
   <p class="text-[var(--text-muted)] text-sm leading-relaxed mt-3 max-w-sm mx-auto lang" data-ru="Мы связываемся с кандидатами в Telegram. Пожалуйста, периодически проверяйте личные сообщения или напишите нашему менеджеру первыми, чтобы получить ответ как можно быстрее!" data-ua="Ми зв'язуємось із кандидатками в Telegram. Будь ласка, періодично перевіряйте приватні повідомлення або напишіть нашому менеджеру першими, щоб отримати відповідь якнайшвидше!">
-    Мы связываемся с кандидатами в Telegram. Пожалуйста, периодически проверяйте личные сообщения или напишите нашему менеджеру первыми, чтобы получить ответ как можно быстрее!
+    Мы связываемс с кандидатами в Telegram. Пожалуйста, периодически проверяйте личные сообщения или напишите нашему менеджеру первыми, чтобы получить ответ как можно быстрее!
   </p>
   <div class="mt-8 flex flex-col sm:flex-row sm:justify-center gap-3">
     <a href="https://t.me/diva_modelss" target="_blank" rel="noopener" class="btn btn-primary w-full sm:w-auto justify-center lang" data-ru="Написать менеджеру" data-ua="Написати менеджеру">Написать менеджеру</a>
@@ -398,7 +364,6 @@
   var root = document.getElementById('af-root');
   if(!root) return;
 
-  // Pill toggle groups
   root.querySelectorAll('.af-group').forEach(function(group){
     group.querySelectorAll('.af-pill').forEach(function(pill){
       pill.addEventListener('click', function(){
@@ -429,7 +394,6 @@
       else{ field.classList.remove('af-invalid'); }
     });
 
-    // Pill groups start with nothing selected — each one must be answered
     root.querySelectorAll('.af-group').forEach(function(group){
       if(!group.querySelector('.af-pill.active')){ group.classList.add('af-invalid'); valid = false; }
       else{ group.classList.remove('af-invalid'); }
@@ -458,10 +422,6 @@
       taboo18: pickedValue('taboo18')
     };
 
-    // ============================================================
-    // Адрес, куда уходят заявки. Продублирован в apply.html и
-    // apply-form.html — если поменяется, правьте в обоих файлах.
-    // ============================================================
     var LEAD_ENDPOINT = 'https://diva-leads.diva-models-001.workers.dev';
 
     data.website = document.getElementById('af-website').value;   // honeypot
@@ -486,38 +446,16 @@
       if(!result || !result.ok) return Promise.reject('rejected');
 
       // ############################################################
-      <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1544600723622373');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1544600723622373&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+      // PIXEL SLOT 4 of 4 — LEAD SUBMIT
       // ############################################################
-      // Fires once, right after a valid application is submitted.
-      //
-      //   Meta:   fbq('track', 'Lead');
-      //   TikTok: ttq.track('SubmitForm');
-      //   Google: gtag('event', 'conversion', {send_to: 'AW-XXX/YYY'});
-      //
-      // ############################################################
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead');
+      }
 
       formView.classList.add('hidden');
       successView.classList.add('active');
     })
     .catch(function(){
-      // Ничего не притворяемся: заявка не ушла. Показываем это и даём прямой
-      // контакт, чтобы лид не потерялся, и разблокируем кнопку для повтора.
       sendError.style.display = 'block';
       submitBtn.disabled = false;
       submitBtn.textContent = originalLabel;
